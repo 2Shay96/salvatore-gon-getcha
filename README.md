@@ -8,7 +8,7 @@ Salvatore hunts you across the Mojave after 1–3 in-game days. Defeat him, coll
 
 ## Download v1.0
 
-Download **SalvatoreGanacci-v1.0.zip** from [Releases](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0).
+Download **SalvatoreGanacci-v1.0.zip** from [Nexus Mods](https://www.nexusmods.com/newvegas/mods/99947) or [GitHub Releases](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0).
 Install with your mod manager and enable `SalvatoreGanacci.esp`, then restart the game. Requires Fallout: New Vegas only; no DLC or NVSE required.
 Use a save from before installation for a fresh start. The Ganacci Remote is added to your Aid tab.
 
@@ -30,7 +30,7 @@ The optional filming plugin is excluded from this release.
 ## Making sprites
 
 This sprite mod was made with [Sprite Forge Studio](https://github.com/2Shay96/sprite-forge). The tool is not needed to play the mod. Its Nexus link will be added when Sprite Forge Studio v1.0 is published.
-The Salvatore Nexus page is being prepared; screenshots and video are pending.
+The [Salvatore Nexus page](https://www.nexusmods.com/newvegas/mods/99947) includes screenshots and the [showcase video](https://youtu.be/BFRHDjeNHd4). Deathclaw footage uses a separate filming add-on with invulnerability and increased damage; that add-on is excluded from this v1.0 download.
 
 ## Source and building
 
