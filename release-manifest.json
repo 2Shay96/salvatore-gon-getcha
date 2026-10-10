@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "archive": "SalvatoreGanacci-v1.0.zip",
+  "size": 5050127,
+  "sha256": "ecc4cd7b893a2151c930c34210054ca538f972cc6ff24285068b5807d17558e7",
+  "entries": 57,
+  "assets": 55,
+  "pluginSha256": "6f1ca6618983353f39ef4e2d7adcb9a23acdfd19e7f03875723363b5af0e21ec",
+  "checks": [
+    "55 installed asset sizes and hashes match build manifest",
+    "Installed plugin matches accepted A6 RC",
+    "57 unique forward-slash archive entries",
+    "ZIP CRC and all extracted bytes verified",
+    "Filming plugin and probe excluded"
+  ],
+  "files": {
+    "SalvatoreGanacci-Readme.txt": {
+      "size": 4494,
+      "sha256": "8cef81f53a3c6813275a94466a43639aefd8244b3607f9f6f18f145f7d4b11fe"
+    },
+    "SalvatoreGanacci.esp": {
+      "size": 32011,
+      "sha256": "6f1ca6618983353f39ef4e2d7adcb9a23acdfd19e7f03875723363b5af0e21ec"
+    },
+    "meshes/creatures/salvatoreganacci/death.kf": {
+      "size": 877,
+      "sha256": "f0d7b8b0319cb2eaa8e1e2305110ed135c7a506f2f11cf6bb89c70200e28485c"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_activate.kf": {
+      "size": 9687,
+      "sha256": "c074f438f1ea9bc5b1ed9597a054e067d1711c57a5eb8b6834f47b144e3b69f3"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_cutcake.kf": {
+      "size": 20494,
+      "sha256": "70cc950735ef423a32897506b2ec2e2e858a5249b5469cbb88b67bfe56c7f8fa"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_deactivate.kf": {
+      "size": 13022,
+      "sha256": "3f3f255dff95f6f0f1d77e30c72e8bf9e174078244e23215f209978eb4f249c8"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_deactivateidle.kf": {
+      "size": 6591,
+      "sha256": "dbf75a8ad13caf583fa9b80fb6ffa7e6562b24202f594204ecac0641a9321fbd"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_dialogue.kf": {
+      "size": 11886,
+      "sha256": "8579ab757feff429843efb10a0d7741d77f97784c5962351c9973d4fcab65606"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_knockdowngetup.kf": {
+      "size": 11446,
+      "sha256": "c34e489f58951c753eac816a0fa50e3b50ed255a5eed37399b76f317449c09e6"
+    },
+    "meshes/creatures/salvatoreganacci/idleanims/specialidle_limbs.kf": {
+      "size": 8087,
+      "sha256": "d7aea7633b323f419b1ea4b46e240e263c083872bd7734bd43f0e2167f53b4a7"
+    },
+    "meshes/creatures/salvatoreganacci/mtbackward.kf": {
+      "size": 7205,
+      "sha256": "7e0bedbabf10194aa5f39559a98a5a386b895bad5f31c03a4419847b1d502246"
+    },
+    "meshes/creatures/salvatoreganacci/mtfastforward.kf": {
+      "size": 8562,
+      "sha256": "ace1ea013b203b5501534427d12a3c4687cd301ff4f9fcb99c3f4335344def46"
+    },
+    "meshes/creatures/salvatoreganacci/mtforward.kf": {
+      "size": 9074,
+      "sha256": "9653afb1f4e757a28646ab0489d5ce621f86da258e144cf36a44adab5f76fc20"
+    },
+    "meshes/creatures/salvatoreganacci/mtidle.kf": {
+      "size": 9353,
+      "sha256": "2f95cfd629e2387d5c61343a7685d6ff197d7842e40f9c2b6404796769837266"
+    },
+    "meshes/creatures/salvatoreganacci/mtleft.kf": {
+      "size": 7405,
+      "sha256": "b1e570b1c3cc8d221d538cd5485b8f8fa9c29da40341272c2d23210561f1ef7a"
+    },
+    "meshes/creatures/salvatoreganacci/mtright.kf": {
+      "size": 7406,
+      "sha256": "1e85ace98c2f95387be19205016546e3a2fba64ca26c2414c2b717079f65388f"
+    },
+    "meshes/creatures/salvatoreganacci/mtturnleft.kf": {
+      "size": 9880,
+      "sha256": "8cd6a348cb9f855e4e6a486c7e14552e59bc3ebe9015aa7862dc86c39b88f499"
+    },
+    "meshes/creatures/salvatoreganacci/mtturnright.kf": {
+      "size": 7755,
+      "sha256": "a9e05c3d1b7276126fcec36942db55dc9ba806376bbcaaa6404bd6e17303d69a"
+    },
+    "meshes/creatures/salvatoreganacci/recoil.kf": {
+      "size": 8675,
+      "sha256": "dea4ef6c5097a4df836f1a09e9942ba82303535f48873918f7f48891de44f97b"
+    },
+    "meshes/creatures/salvatoreganacci/salvatorebody.nif": {
+      "size": 3935,
+      "sha256": "fd6645162de141308f43bfe885bde7ba5a34988b1420d279a68dc89302e3191a"
+    },
+    "meshes/creatures/salvatoreganacci/skeleton.nif": {
+      "size": 52973,
+      "sha256": "148edd171b856323f66e098aea2beb4679bfa2990054cdf389c2a1af380c682f"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmaim.kf": {
+      "size": 9201,
+      "sha256": "af4f3a6ca0d552f28fe1f8c2b99e6484609c280bd588c0c2cf6e0c58edfca3c5"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmattackleft_chop.kf": {
+      "size": 7717,
+      "sha256": "da0693fa1fbbaa5eb1732f4f55b763949696162ec37bc3fc1e7cec38732c0896"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmattackright_chop.kf": {
+      "size": 8279,
+      "sha256": "1f7824b6213690fe8aeaad6e5b3371c68c24670a39d3c8adce749c12135e1332"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmattackright_stab.kf": {
+      "size": 7260,
+      "sha256": "d07c210fe12e83f0877a723ea6e90dab0137f021a0ae68a24d9b887f9f18911b"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmattackright_uppercut.kf": {
+      "size": 7662,
+      "sha256": "80ca7f0ea0ae4bf9f9bc64ef44cedec2ed9d94f6578a0a8bb9f6f65e6c06026e"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmequip.kf": {
+      "size": 8368,
+      "sha256": "75524d0ec450d8e2e22a275a4d752cc9fba42368f5c7ad944e06dcccb8aeb04a"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmholster.kf": {
+      "size": 5405,
+      "sha256": "942a4688b682b27b752473b794a27ca66a8f2635e06c3fd6d95d9c017662dc8c"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hmunequip.kf": {
+      "size": 7439,
+      "sha256": "09d09faf68332641d507b2c4d859a0a2ff75ae9a2093d56e6473e1a53e471798"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpaim.kf": {
+      "size": 4754,
+      "sha256": "39e7bcded8bfbd0961429dd9d80a7a5abf2d589b78797609cd108242da79983d"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpaimdown.kf": {
+      "size": 4657,
+      "sha256": "10818dbf08e5e6c9ac6e18d7f8cc4a690c54894560119fa3266c4bffb00dd511"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpaimup.kf": {
+      "size": 4655,
+      "sha256": "1c044df16e173112161f4ad520c8d0dd97ef1a2fb0571baeab7536c38f265969"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpattackright.kf": {
+      "size": 5385,
+      "sha256": "0df859fc28443f393fa2c94639c5fc121c0dce59dc84fd86982959e188de1699"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpequip.kf": {
+      "size": 9368,
+      "sha256": "aca1975ca014741ff68b46ce6bf8ae628914c0655fcc54ccdfa76c18e8902a16"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpholster.kf": {
+      "size": 4694,
+      "sha256": "fab9aaca123f76795e8708a4877778e0f0a0c1f558262c18559ab1197ab52332"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/1hpunequip.kf": {
+      "size": 7819,
+      "sha256": "443c23b59404cf8e31fe4a271b5d1b207af12ab360907eb4f17636cd3a5511f8"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlaim.kf": {
+      "size": 8474,
+      "sha256": "a819f774a50f88b3a6db066da182198dd99c93a906d157701a740a70a86eb155"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlattackspin.kf": {
+      "size": 5364,
+      "sha256": "0b6e81cb79843f3b954358ff728bc5645ee6a10ce64600a581d759ce9c7c1005"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlattackspindown.kf": {
+      "size": 5044,
+      "sha256": "b31b81435cb0fae23ad3694e90b25612610184ba645d1bec3fbaa9cb6ea523c9"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlattackspinup.kf": {
+      "size": 5344,
+      "sha256": "47ef0f4785690ee806aae9189c60df9b84b6bb1383e5bceee0f916caa95ca049"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlequip.kf": {
+      "size": 8687,
+      "sha256": "a451a065fa19b18d4408fc3262b443b2abec38e4871c4ff683601d623ae9d1a0"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlholster.kf": {
+      "size": 4454,
+      "sha256": "c1583520a9af8eac22175829749d1eedeb824cd6e393bbc7732a4bb7fc8dc842"
+    },
+    "meshes/creatures/salvatoreganacci/specialanims/2hlunequip.kf": {
+      "size": 7758,
+      "sha256": "bb5a7051fb444a128e7c1b38278eb43097d63a49d28d6557fc94f5fbf50e4cd0"
+    },
+    "meshes/salvatore/salvatore_down.nif": {
+      "size": 4533,
+      "sha256": "f9693bb85e756681e48be4e548612b5a7f20f495c211c46d581271867d804980"
+    },
+    "meshes/salvatore/theme_emitter.nif": {
+      "size": 209,
+      "sha256": "12b34230bca576c9234490508a49a876a3f2f74095145e62e649cc93802099a6"
+    },
+    "sound/fx/salvatore/salv_deadloop_lp.wav": {
+      "size": 499878,
+      "sha256": "102032e78b13160cd71b33074e54d6a11747a53c260f10280808bfdbb5f56c8a"
+    },
+    "sound/fx/salvatore/salv_defeated.wav": {
+      "size": 88984,
+      "sha256": "2a9fe3c401c675eb10f27ead132cac3e04a8b59789387cf6acdb9a57357d05bb"
+    },
+    "sound/fx/salvatore/salv_music_lp.wav": {
+      "size": 1054770,
+      "sha256": "e128b16fa19de93549bb5dd5a2c38800e7772f0a5105d1c0c09614c117d4d583"
+    },
+    "sound/fx/salvatore/salv_release.wav": {
+      "size": 88984,
+      "sha256": "ea7981f88a807b1f55a65bd4d9faebfad7672acf5a62b3d76355e0840ca3aa60"
+    },
+    "sound/fx/salvatore/salvatore_attack_quip.wav": {
+      "size": 158104,
+      "sha256": "4439b433c2c27975d51f5bdabb3531251ea6a345021fb4e703a77874cbe0a3a9"
+    },
+    "sound/fx/salvatore/salvatore_idle_quip.wav": {
+      "size": 158104,
+      "sha256": "1db102dc7f53be2e7bfa6311118173d674cbfb3051dc90ae55970da9c77b34bf"
+    },
+    "sound/fx/salvatore/salvatore_idle_quip_2.wav": {
+      "size": 183828,
+      "sha256": "54209f9d312c2e264ec8f49263dd63425dde2274bc6ddcbf5728f68036792eb4"
+    },
+    "textures/creatures/salvatoreganacci/salvatorebody.dds": {
+      "size": 5592528,
+      "sha256": "69a57f413ef7b091296d4f0f699c06ac36e3a0c805ab7977e9cfdf1796935a44"
+    },
+    "textures/interface/icons/pipboyimages/weapons/salvatore.dds": {
+      "size": 87504,
+      "sha256": "cb336ec96745cae775c7ccff9aa0f7310261a1c6329d2cbd02a364e74756f59e"
+    },
+    "textures/salvatoreganacci/attack.dds": {
+      "size": 1398224,
+      "sha256": "7f1f873a5f908368f896f56e2fc0f1829642315abff7c1f1b4baa9a370554d77"
+    },
+    "textures/salvatoreganacci/idle.dds": {
+      "size": 1398224,
+      "sha256": "f18e483d0ca1bcfa0611bf5f31a3a6a6ef3a856c79eaf6c6b0e0b0b3ec107b36"
+    },
+    "textures/salvatoreganacci/main.dds": {
+      "size": 1398224,
+      "sha256": "2a58fc20ba24d8c01b8c3a485b4ea096e5688544ae1ed7c34f06db02e93096d0"
+    }
+  }
+}

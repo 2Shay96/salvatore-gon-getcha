@@ -1,0 +1,10 @@
+scn SalvatoreGanacciDownScript
+
+ref rUser
+
+Begin OnActivate
+	set rUser to GetActionRef
+	if rUser.GetIsReference player
+		set SalvatoreGanacciQuest.PickupPending to 1
+	endif
+End

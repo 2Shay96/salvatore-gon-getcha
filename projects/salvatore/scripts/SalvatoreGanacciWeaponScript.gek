@@ -1,0 +1,8 @@
+scn SalvatoreGanacciWeaponScript
+
+; Dropping Salvatore deploys him too: he hops back into the inventory (keeping his condition)
+; and the quest equips him, which deploys the companion.
+Begin OnDrop player
+	set SalvatoreGanacciQuest.DropPending to 1
+	Activate player
+End

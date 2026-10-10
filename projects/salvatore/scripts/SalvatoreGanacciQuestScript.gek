@@ -1,0 +1,408 @@
+scn SalvatoreGanacciQuestScript
+
+; Salvatore Ganacci - state machine (vanilla GECK scripting, no NVSE).
+; State: 0 waiting to haunt, 1 haunting (hostile boss), 2 down on the ground (pickup),
+;        3 carried as a weapon, 4 deployed companion.
+; Console helpers while testing (the console cannot find this mod's quests by name, so use the
+; FormIDs from projects/salvatore/V1_CHECKLIST.md; each command quest stops itself again):
+;   startquest <SalvatoreGanacciCmdSummon>  -> bring him about 1500 units from the player
+;   startquest <SalvatoreGanacciCmdFar>     -> send him to the map marker farthest from the player
+;   startquest <SalvatoreGanacciCmdReset>   -> send him home and start over
+;   TestMode (set to 0 on first run): release timing; the Remote switches it.
+;   TestMode 1: he appears ~1500 units away at once.
+; The Ganacci Remote (aid item, given once) does the same from a menu, plus status and test mode;
+; console commands by FormID failed on the Windows PC (5 Oct), so the remote is the test tool.
+
+short Init
+short State
+short TestMode
+short SummonNear
+short IsCompanion
+short DeathPending
+short DropPending
+short PickupPending
+short StoreRequest
+short DownStage
+float Condition
+float HealthFrac
+float SpawnDay
+float Timer
+float Dist
+float BestDist
+ref Farthest
+; added after the first test build: keep new variables last so saved games keep their values
+short Reset
+float px
+float py
+float dx
+float dy
+short FarRequest
+short Spawned
+short DeathStage
+; added 5 Oct (Build B): the Ganacci Remote menu
+short GiveRemote
+short MenuRequest
+short MenuOpen
+short Button
+; Build F: append variables to preserve saved-game variable indices.
+short RoamTracking
+short RoamWanted
+float RoamStillTimer
+float RoamLastX
+float RoamLastY
+float RoamLastZ
+float RoamMoveX
+float RoamMoveY
+float RoamMoveZ
+; A4 one-shot queues; append for save compatibility.
+short DefeatCuePending
+short ReleaseCuePending
+float DefeatCueTimer
+float ReleaseCueTimer
+float CueDelta
+; Retired A5b variables retained in place for saved-game compatibility.
+short ThemeMode
+float ThemeHold
+
+Begin GameMode
+
+	set CueDelta to GetSecondsPassed
+
+	if Init == 0
+		set Init to 1
+		set TestMode to 0
+		set Condition to 100
+		set SpawnDay to GameDaysPassed + 1 + (GetRandomPercent * 0.02)
+	endif
+
+	if Reset == 1
+		set Reset to 0
+		SalvatoreGanacciREF.SetPlayerTeammate 0
+		SalvatoreGanacciREF.Disable
+		SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
+		if SalvatoreGanacciREF.GetDead == 1
+			SalvatoreGanacciREF.Resurrect
+		endif
+		SalvatoreGanacciDownREF.Disable
+		set IsCompanion to 0
+		set DownStage to 0
+		set State to 0
+	endif
+
+	; his body goes away two frames after the defeated sprite has been placed where he fell
+	if DeathStage == 2
+		set DeathStage to 0
+		SalvatoreGanacciREF.Disable
+		SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
+	elseif DeathStage == 1
+		set DeathStage to 2
+	endif
+
+	; ---------------- Ganacci Remote: given once; using it opens the menu ----------------
+	if GiveRemote == 0
+		set GiveRemote to 1
+		player.AddItem SalvatoreGanacciRemote 1 1
+	endif
+	if MenuRequest == 1
+		set MenuRequest to 0
+		ShowMessage SalvatoreGanacciRemoteMenu
+		set MenuOpen to 1
+	endif
+	if MenuOpen == 1
+		set Button to GetButtonPressed
+		if Button >= 0
+			set MenuOpen to 0
+			if Button == 0
+				set SummonNear to 1
+			elseif Button == 1
+				set FarRequest to 1
+			elseif Button == 2
+				set Reset to 1
+			elseif Button == 3
+				ShowMessage SalvatoreGanacciStatusMsg State Condition TestMode
+			elseif Button == 4
+				set TestMode to 1 - TestMode
+				ShowMessage SalvatoreGanacciStatusMsg State Condition TestMode
+			endif
+		endif
+	endif
+
+	; ---------------- test commands (command quests started from the console by FormID) ----------------
+	if GetQuestRunning SalvatoreGanacciCmdSummon
+		StopQuest SalvatoreGanacciCmdSummon
+		set SummonNear to 1
+	endif
+	if GetQuestRunning SalvatoreGanacciCmdFar
+		StopQuest SalvatoreGanacciCmdFar
+		set FarRequest to 1
+	endif
+	if GetQuestRunning SalvatoreGanacciCmdReset
+		StopQuest SalvatoreGanacciCmdReset
+		set Reset to 1
+	endif
+
+	; ---------------- 0: wait, then appear ----------------
+	if State == 0
+		if player.IsInInterior == 0 && player.GetInWorldspace WastelandNV == 1
+			if TestMode == 1
+				set SummonNear to 1
+			elseif GameDaysPassed >= SpawnDay
+				set FarRequest to 1
+			endif
+		endif
+	endif
+
+	; near: about 1500 units from the player
+	if SummonNear == 1
+		set SummonNear to 0
+		if State <= 1
+			SalvatoreGanacciREF.MoveTo player 1500 0 0
+			set Spawned to 1
+		endif
+	endif
+
+	; far: the map marker farthest from the player. Positions are the markers' own coordinates
+	; (GetPos on a marker in an unloaded cell is not reliable, which made him always pick Goodsprings).
+	if FarRequest == 1
+		set FarRequest to 0
+		if State <= 1 && player.IsInInterior == 0 && player.GetInWorldspace WastelandNV == 1
+			set px to player.GetPos x
+			set py to player.GetPos y
+			set BestDist to -1
+			set dx to -62219 - px
+			set dy to 12673 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to GoodspringsCemeteryMapMarker
+			endif
+			set dx to -32672 - px
+			set dy to -93824 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to NiptonMapMarker
+			endif
+			set dx to 26319 - px
+			set dy to -96652 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to SearchlightMapMarker
+			endif
+			set dx to 63127 - px
+			set dy to -89233 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to CottonwoodCoveMapMarker
+			endif
+			set dx to -108427 - px
+			set dy to 96470 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to JacobstownMapMarker
+			endif
+			set dx to 34322 - px
+			set dy to 125976 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to NellisMapMarker
+			endif
+			set dx to -35778 - px
+			set dy to 16256 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to QuarryJunctionMapMarker
+			endif
+			set dx to -43680 - px
+			set dy to 38208 - py
+			set Dist to dx * dx + dy * dy
+			if Dist > BestDist
+				set BestDist to Dist
+				set Farthest to Vault19MapMarker
+			endif
+			SalvatoreGanacciREF.MoveTo Farthest
+			set Spawned to 1
+		endif
+	endif
+
+	if Spawned == 1
+		set Spawned to 0
+		SalvatoreGanacciREF.Enable
+		SalvatoreGanacciREF.SetPlayerTeammate 0
+		SalvatoreGanacciREF.SetAV Aggression 2
+		SalvatoreGanacciREF.EvaluatePackage
+		set IsCompanion to 0
+		set State to 1
+	endif
+
+	; ---------------- 1: haunting - he follows the player (package) and fights on sight ----------------
+	if State == 1
+		if SalvatoreGanacciREF.GetDead == 0 && SalvatoreGanacciREF.IsInCombat == 0
+			if SalvatoreGanacciREF.GetDistance player < 2500
+				SalvatoreGanacciREF.StartCombat player
+			endif
+		endif
+	endif
+
+	; ---------------- death (boss or companion): leave a small Salvatore on the ground ----------------
+	if DeathPending == 1
+		set DeathPending to 0
+		if IsCompanion == 1
+			set Condition to Condition - 33.34
+			if Condition < 1
+				set Condition to 0
+			endif
+		endif
+		set IsCompanion to 0
+		; his own script already dropped the small sprite and played the sting on the death frame (Build B);
+		; DeathStage still sends the body home (and hides it if his script did not)
+		set DeathStage to 1
+		set Timer to 1.2
+		set DownStage to 1
+		set State to 2
+	endif
+
+	; ---------------- 2: down on the ground: defeat sting, then the dead loop, until picked up ----------------
+	if State == 2
+		if DownStage == 1
+			set Timer to Timer - GetSecondsPassed
+			if Timer <= 0
+				set DownStage to 2
+			endif
+		endif
+		if PickupPending == 1
+			set PickupPending to 0
+			set HealthFrac to Condition / 100
+			player.AddItemHealthPercent SalvatoreGanacciWeapon 1 HealthFrac
+			SalvatoreGanacciDownREF.Disable
+			SalvatoreGanacciDownREF.MoveTo SalvatoreGanacciHoldMarkerREF
+			set DownStage to 0
+			set State to 3
+		endif
+	endif
+
+	; ---------------- 3: carried; equipping (or dropping) him deploys the companion ----------------
+	if State == 3
+		if DropPending == 1
+			set DropPending to 0
+			if player.GetItemCount SalvatoreGanacciWeapon > 0
+				player.EquipItem SalvatoreGanacciWeapon 0 1
+			endif
+		elseif player.GetEquipped SalvatoreGanacciWeapon == 1
+			set Condition to player.GetWeaponHealthPerc
+			player.UnequipItem SalvatoreGanacciWeapon 0 1
+			if Condition < 1
+				ShowMessage SalvatoreGanacciTooBatteredMsg
+			else
+				player.RemoveItem SalvatoreGanacciWeapon 1 1
+				SalvatoreGanacciREF.MoveTo player 120 0 0
+				SalvatoreGanacciREF.Enable
+				if SalvatoreGanacciREF.GetDead == 1
+					SalvatoreGanacciREF.Resurrect
+				endif
+				SalvatoreGanacciREF.RestoreAV Health 5000
+				SalvatoreGanacciREF.SetPlayerTeammate 1
+				SalvatoreGanacciREF.SetAV Aggression 1
+				SalvatoreGanacciREF.StopCombat
+				SalvatoreGanacciREF.EvaluatePackage
+				set ReleaseCuePending to 1
+				set IsCompanion to 1
+				set State to 4
+			endif
+		endif
+	endif
+
+	; ---------------- 4: companion; activating him puts him back in the inventory ----------------
+	if State == 4
+		if StoreRequest == 1
+			set StoreRequest to 0
+			set HealthFrac to Condition / 100
+			player.AddItemHealthPercent SalvatoreGanacciWeapon 1 HealthFrac
+			SalvatoreGanacciREF.SetPlayerTeammate 0
+			SalvatoreGanacciREF.Disable
+			SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
+			set IsCompanion to 0
+			set State to 3
+		endif
+	endif
+
+
+	; Companion-only exploration: pause three seconds before wandering near the player.
+	; Only reevaluate on a mode change; movement/combat immediately restores follow AI.
+	set RoamWanted to 0
+	if State == 4 && IsCompanion == 1 && SalvatoreGanacciREF.GetDead == 0
+		if RoamTracking == 0
+			set RoamTracking to 1
+			set RoamStillTimer to 0
+		else
+			set RoamMoveX to player.GetPos x - RoamLastX
+			set RoamMoveY to player.GetPos y - RoamLastY
+			set RoamMoveZ to player.GetPos z - RoamLastZ
+			if (RoamMoveX * RoamMoveX + RoamMoveY * RoamMoveY + RoamMoveZ * RoamMoveZ) > 64
+				set RoamStillTimer to 0
+			elseif player.IsInCombat == 1 || SalvatoreGanacciREF.IsInCombat == 1
+				set RoamStillTimer to 0
+			else
+				set RoamStillTimer to RoamStillTimer + GetSecondsPassed
+				if RoamStillTimer >= 3 && SalvatoreGanacciREF.GetDistance player < 700
+					set RoamWanted to 1
+				endif
+			endif
+		endif
+		set RoamLastX to player.GetPos x
+		set RoamLastY to player.GetPos y
+		set RoamLastZ to player.GetPos z
+	else
+		set RoamTracking to 0
+		set RoamStillTimer to 0
+	endif
+	if SalvatoreGanacciRoamReady != RoamWanted
+		set SalvatoreGanacciRoamReady to RoamWanted
+		SalvatoreGanacciREF.EvaluatePackage
+	endif
+
+
+	; Enable/MoveTo/Resurrect can precede emitter 3D loading. Queue once, then wait.
+	if DefeatCuePending > 0
+		if State != 2
+			set DefeatCuePending to 0
+		elseif DefeatCuePending == 1
+			set DefeatCuePending to 2
+			set DefeatCueTimer to 0.35
+		else
+			set DefeatCueTimer to DefeatCueTimer - CueDelta
+			if DefeatCueTimer <= 0
+				set DefeatCuePending to 0
+				SalvatoreGanacciDownREF.PlaySound3D SalvatoreGanacciDefeatedSound
+			endif
+		endif
+	endif
+	if ReleaseCuePending > 0
+		if State != 4 || IsCompanion == 0
+			set ReleaseCuePending to 0
+		elseif ReleaseCuePending == 1
+			set ReleaseCuePending to 2
+			set ReleaseCueTimer to 0.35
+		else
+			set ReleaseCueTimer to ReleaseCueTimer - CueDelta
+			if ReleaseCueTimer <= 0
+				set ReleaseCuePending to 0
+				SalvatoreGanacciREF.PlaySound3D SalvatoreGanacciReleaseSound
+			endif
+		endif
+	endif
+
+
+	; Retired A5b emitter: turn off saved active instances before the native theme plays.
+	if SalvatoreGanacciThemeREF.GetDisabled == 0
+		SalvatoreGanacciThemeREF.Disable
+	endif
+	set ThemeMode to 0
+	set ThemeHold to 0
+
+End

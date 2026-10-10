@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+state/index/
+state/templates/
+state/backups/
+state/installs/
+evidence/
+_to_delete/
+*.esm
+*.bsa
+*.ba2
+*.log
+.env

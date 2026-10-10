@@ -1,0 +1,47 @@
+[center][size=6][color=#E6B85C][b]SALVATORE GON’ GETCHA[/b][/color][/size]
+[size=4][color=#EAD8B0]He finds you. He fights you. Then he fits in your inventory.[/color][/size][/center]
+
+[color=#EAD8B0]Bring a dancing Salvatore Ganacci billboard sprite into Fallout: New Vegas. He starts as a hostile encounter in the Mojave; defeat him, collect him, and deploy him as a companion who follows, fights and explores nearby while you stand still.
+
+This sprite mod was made with [url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio[/url], with the gameplay plugin authored in GECK. Sprite Forge Studio is a creation tool; you do not need it installed to play this mod.[/color]
+
+[size=4][color=#E6B85C][b]FROM BOSS TO POCKET COMPANION[/b][/color][/size]
+[color=#EAD8B0][list]
+[*]A hostile Salvatore encounter begins after 1-3 in-game days while outdoors in the Mojave.
+[*]Separate main, idle and attack sprite animations, with smooth forward/backward main and idle loops at 24 fps.
+[*]A constant spatial theme while he is active, an occasional attack quip, and two randomly selected idle clips.
+[*]Defeat him to reveal a small collectible sprite, then equip the collected item to deploy your companion.
+[*]He follows, fights enemies and roams nearby when you stop moving.
+[*]Companion defeats reduce his condition to approximately 66%, 33%, then 0%. Repair him before deploying again.
+[*]The Ganacci Remote lets you check his status, summon him nearby, send him away, reset the encounter and switch test mode.
+[/list][/color]
+
+[size=4][color=#E6B85C][b]INSTALLATION & REQUIREMENTS[/b][/color][/size]
+[color=#EAD8B0]Requires Fallout: New Vegas and FalloutNV.esm. No DLC or NVSE required.
+
+Install SalvatoreGanacci-v1.0.zip with your mod manager and enable SalvatoreGanacci.esp, then restart the game. For manual installation, copy the plugin and meshes, textures and sound folders into Fallout New Vegas/Data, preserving their folder structure.
+
+Use a save made before installing the mod for a fresh start. The weightless Ganacci Remote appears in the Aid tab. Use it and close the Pip-Boy to open its menu. The natural encounter begins outdoors in the main Mojave worldspace; if you are indoors or on the Strip, head back into the Mojave.
+
+After collecting Salvatore, equip the item to deploy him. Activate the companion to store him in your inventory. At 0% condition he is too battered to deploy: repair the item and equip it again.[/color]
+
+[size=4][color=#E6B85C][b]KNOWN ISSUES â€” v1.0[/b][/color][/size]
+[color=#EAD8B0][list]
+[*]Remote relocation while carrying Salvatore can create duplicates; collected duplicates may share the broken condition. Avoid Send away/Summon while carrying him. A fix is planned for v1.1.
+[*]Repair works through the normal item repair flow. Repair-bag compatibility has not been tested.
+[*]Music continues in menus and the Pip-Boy. Scripted pickup can be silent, and a brief sprite flicker may occur on first appearance.
+[*]Existing saves retain their test-mode setting when updating.
+[/list]
+To uninstall, use your mod manager and preferably return to a save from before installation. For manual installs, remove only the files listed in this mod's archive and restart the game.[/color]
+
+[size=4][color=#E6B85C][b]MADE WITH SPRITE FORGE STUDIO[/b][/color][/size]
+[color=#EAD8B0][url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio on GitHub[/url]
+Sprite Forge Studio on Nexus: link will be added after its v1.0 publication.
+[url=https://github.com/2Shay96/salvatore-gon-getcha]Salvatore Gon’ Getcha on GitHub[/url][/color]
+
+[size=4][color=#E6B85C][b]CREDITS & PERMISSIONS[/b][/color][/size]
+[color=#EAD8B0]Mod author and media preparation: 2Shay.
+Sprite creation tool: Sprite Forge Studio by 2Shay.
+Some sound effects sourced from [url=https://pixabay.com/sound-effects/]Pixabay[/url] and its sound creators.
+Salvatore Ganacci imagery and artist theme music belong to their respective rights holders. The image is not 2Shay's original artwork. The theme is used with satirical/parody intent; challenged music will be replaced with copyright-free work. No third-party imagery or audio reuse rights are granted here.
+Fallout: New Vegas: Bethesda / Obsidian. This is an unofficial fan mod, with no endorsement implied. Code reuse terms remain unconfirmed.[/color]

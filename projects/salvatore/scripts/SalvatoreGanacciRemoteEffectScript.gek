@@ -1,0 +1,7 @@
+scn SalvatoreGanacciRemoteEffectScript
+
+; Using the Ganacci Remote (aid item) opens its menu once the Pip-Boy is closed; the remote is not used up.
+Begin ScriptEffectStart
+	set SalvatoreGanacciQuest.MenuRequest to 1
+	player.AddItem SalvatoreGanacciRemote 1 1
+End

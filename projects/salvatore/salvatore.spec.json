@@ -1,0 +1,1075 @@
+{
+ "schema": 1,
+ "project_id": "salvatore",
+ "plugin": "SalvatoreGanacci.esp",
+ "author": "2Shay",
+ "description": "Salvatore Ganacci: a haunting dancing boss who becomes a weapon and a companion.",
+ "masters": [
+  "FalloutNV.esm"
+ ],
+ "records": {
+  "SalvatoreGanacciMusicSound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salv_music_lp.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      30,
+      50,
+      0,
+      0,
+      4112,
+      1300,
+      0,
+      0,
+      100,
+      40,
+      18,
+      6,
+      0,
+      80,
+      200,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciDeadLoopSound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salv_deadloop_lp.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      20,
+      15,
+      0,
+      0,
+      4112,
+      1100,
+      0,
+      0,
+      100,
+      40,
+      18,
+      6,
+      0,
+      80,
+      200,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciDefeatedSound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salv_defeated.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      60,
+      30,
+      0,
+      0,
+      4096,
+      1200,
+      0,
+      0,
+      100,
+      60,
+      30,
+      10,
+      0,
+      80,
+      200,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciReleaseSound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salv_release.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      60,
+      30,
+      0,
+      0,
+      4096,
+      1300,
+      0,
+      0,
+      100,
+      60,
+      30,
+      10,
+      0,
+      80,
+      200,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciQuestScript": {
+   "type": "SCPT",
+   "source": "scripts/SalvatoreGanacciQuestScript.gek",
+   "script_type": "quest"
+  },
+  "SalvatoreGanacciCreatureScript": {
+   "type": "SCPT",
+   "source": "scripts/SalvatoreGanacciCreatureScript.gek",
+   "script_type": "object"
+  },
+  "SalvatoreGanacciWeaponScript": {
+   "type": "SCPT",
+   "source": "scripts/SalvatoreGanacciWeaponScript.gek",
+   "script_type": "object"
+  },
+  "SalvatoreGanacciDownScript": {
+   "type": "SCPT",
+   "source": "scripts/SalvatoreGanacciDownScript.gek",
+   "script_type": "object"
+  },
+  "SalvatoreGanacciDownActivator": {
+   "type": "ACTI",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      -12,
+      -12,
+      0,
+      12,
+      12,
+      40
+     ]
+    },
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci"
+    },
+    {
+     "tag": "MODL",
+     "text": "salvatore\\salvatore_down.nif"
+    },
+    {
+     "tag": "SCRI",
+     "form": "@SalvatoreGanacciDownScript"
+    },
+    {
+     "tag": "SNAM",
+     "form": "@SalvatoreGanacciDeadLoopSound"
+    }
+   ]
+  },
+  "SalvatoreGanacciRepairList": {
+   "type": "FLST",
+   "fields": [
+    {
+     "tag": "LNAM",
+     "form": "@SalvatoreGanacciWeapon"
+    }
+   ]
+  },
+  "SalvatoreGanacciWeapon": {
+   "type": "WEAP",
+   "template": "WeapKnife",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      -12,
+      -12,
+      0,
+      12,
+      12,
+      40
+     ]
+    },
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci"
+    },
+    {
+     "tag": "MODL",
+     "text": "salvatore\\salvatore_down.nif"
+    },
+    {
+     "tag": "MODT",
+     "remove": true
+    },
+    {
+     "tag": "ICON",
+     "text": "Interface\\Icons\\PipboyImages\\Weapons\\salvatore.dds"
+    },
+    {
+     "tag": "SCRI",
+     "form": "@SalvatoreGanacciWeaponScript",
+     "after": "ICON"
+    },
+    {
+     "tag": "REPL",
+     "form": "@SalvatoreGanacciRepairList"
+    },
+    {
+     "tag": "YNAM",
+     "form": "@UIItemsClothingUp"
+    },
+    {
+     "tag": "ZNAM",
+     "form": "@UIItemsClothingDown"
+    },
+    {
+     "tag": "DATA",
+     "patch": [
+      [
+       0,
+       "<i",
+       500
+      ],
+      [
+       4,
+       "<i",
+       100
+      ],
+      [
+       8,
+       "<f",
+       2.0
+      ],
+      [
+       12,
+       "<h",
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciTooBatteredMsg": {
+   "type": "MESG",
+   "template": "PrimmSlimRepairFail",
+   "fields": [
+    {
+     "tag": "DESC",
+     "text": "Salvatore Ganacci is too battered to dance. Repair him first."
+    }
+   ]
+  },
+  "SalvatoreGanacciFollowPackage": {
+   "type": "PACK",
+   "template": "SentryBotToyFollowPlayerPackage",
+   "fields": [
+    {
+     "tag": "CTDA",
+     "remove": true
+    },
+    {
+     "tag": "PTDT",
+     "patch": [
+      [
+       8,
+       "<i",
+       400
+      ]
+     ]
+    },
+    {
+     "tag": "PKDT",
+     "patch": [
+      [
+       0,
+       "<I",
+       72355840
+      ]
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciCreature": {
+   "type": "CREA",
+   "template": "REPCONMrHandy",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      -41,
+      -41,
+      0,
+      41,
+      41,
+      190
+     ]
+    },
+    {
+     "tag": "MODL",
+     "text": "Creatures\\SalvatoreGanacci\\Skeleton.nif"
+    },
+    {
+     "tag": "VTCK",
+     "form": "@SalvatoreGanacciVoice"
+    },
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci"
+    },
+    {
+     "tag": "NIFZ",
+     "remove": true
+    },
+    {
+     "tag": "ACBS",
+     "patch": [
+      [
+       8,
+       "<h",
+       30
+      ],
+      [
+       14,
+       "<H",
+       75
+      ]
+     ]
+    },
+    {
+     "tag": "SNAM",
+     "remove": true
+    },
+    {
+     "tag": "INAM",
+     "remove": true
+    },
+    {
+     "tag": "SCRI",
+     "form": "@SalvatoreGanacciCreatureScript"
+    },
+    {
+     "tag": "CNTO",
+     "remove": true
+    },
+    {
+     "tag": "CNTO",
+     "pack": "<Ii",
+     "values": [
+      "@SalvatoreGanacciFist",
+      1
+     ],
+     "after": "SCRI"
+    },
+    {
+     "tag": "AIDT",
+     "patch": [
+      [
+       0,
+       "<B",
+       2
+      ],
+      [
+       1,
+       "<B",
+       4
+      ]
+     ]
+    },
+    {
+     "tag": "PKID",
+     "remove": true
+    },
+    {
+     "insert": [
+      {
+       "tag": "PKID",
+       "form": "@SalvatoreGanacciRoamPackage"
+      },
+      {
+       "tag": "PKID",
+       "form": "@SalvatoreGanacciFollowPackage"
+      }
+     ],
+     "after": "AIDT"
+    },
+    {
+     "tag": "DATA",
+     "patch": [
+      [
+       4,
+       "<h",
+       1000
+      ],
+      [
+       8,
+       "<h",
+       9
+      ]
+     ]
+    },
+    {
+     "tag": "CSCR",
+     "remove": true
+    },
+    {
+     "insert": [
+      {
+       "tag": "CSDT",
+       "u32": 11
+      },
+      {
+       "tag": "CSDI",
+       "form": "@SalvatoreGanacciMusicSound"
+      },
+      {
+       "tag": "CSDC",
+       "u8": 100
+      }
+     ],
+     "after": "NAM5"
+    },
+    {
+     "tag": "LNAM",
+     "form": "@SalvatoreGanacciEmbeddedWeapons"
+    }
+   ]
+  },
+  "SalvatoreGanacciQuest": {
+   "type": "QUST",
+   "fields": [
+    {
+     "tag": "SCRI",
+     "form": "@SalvatoreGanacciQuestScript"
+    },
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci"
+    },
+    {
+     "tag": "DATA",
+     "pack": "<BBHf",
+     "values": [
+      1,
+      50,
+      0,
+      0.25
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciVoice": {
+   "type": "VTYP",
+   "fields": [
+    {
+     "tag": "DNAM",
+     "u8": 0
+    }
+   ]
+  },
+  "SalvatoreGanacciFist": {
+   "type": "WEAP",
+   "template": "MisterHandyBuzzsaw",
+   "fields": [
+    {
+     "tag": "FULL",
+     "text": "Ganacci Fist"
+    },
+    {
+     "tag": "INAM",
+     "form": "000789BE",
+     "after": "NNAM"
+    },
+    {
+     "tag": "DATA",
+     "patch": [
+      [
+       12,
+       "<h",
+       10
+      ]
+     ]
+    },
+    {
+     "tag": "CRDT",
+     "patch": [
+      [
+       0,
+       "<H",
+       10
+      ]
+     ]
+    },
+    {
+     "tag": "DNAM",
+     "patch": [
+      [
+       60,
+       "<f",
+       3.2
+      ],
+      [
+       180,
+       "<f",
+       20.0
+      ]
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciEmbeddedWeapons": {
+   "type": "FLST",
+   "fields": [
+    {
+     "tag": "LNAM",
+     "form": "@SalvatoreGanacciFist"
+    }
+   ]
+  },
+  "SalvatoreGanacciCmdSummon": {
+   "type": "QUST",
+   "fields": [
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci test: summon near"
+    },
+    {
+     "tag": "DATA",
+     "pack": "<BBHf",
+     "values": [
+      0,
+      10,
+      0,
+      1.0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciCmdFar": {
+   "type": "QUST",
+   "fields": [
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci test: send far"
+    },
+    {
+     "tag": "DATA",
+     "pack": "<BBHf",
+     "values": [
+      0,
+      10,
+      0,
+      1.0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciCmdReset": {
+   "type": "QUST",
+   "fields": [
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci test: reset"
+    },
+    {
+     "tag": "DATA",
+     "pack": "<BBHf",
+     "values": [
+      0,
+      10,
+      0,
+      1.0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciRemoteEffectScript": {
+   "type": "SCPT",
+   "source": "scripts/SalvatoreGanacciRemoteEffectScript.gek",
+   "script_type": "effect"
+  },
+  "SalvatoreGanacciRemoteEffect": {
+   "type": "MGEF",
+   "template": "RepairKitEffect",
+   "fields": [
+    {
+     "tag": "FULL",
+     "text": "Ganacci Remote"
+    },
+    {
+     "tag": "DATA",
+     "patch": [
+      [
+       8,
+       "<I",
+       "@SalvatoreGanacciRemoteEffectScript"
+      ]
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciRemote": {
+   "type": "ALCH",
+   "template": "NVRepairKit",
+   "fields": [
+    {
+     "tag": "FULL",
+     "text": "Ganacci Remote"
+    },
+    {
+     "tag": "DATA",
+     "patch": [
+      [
+       0,
+       "<f",
+       0.0
+      ]
+     ]
+    },
+    {
+     "tag": "ENIT",
+     "patch": [
+      [
+       0,
+       "<i",
+       0
+      ]
+     ]
+    },
+    {
+     "tag": "EFID",
+     "form": "@SalvatoreGanacciRemoteEffect"
+    }
+   ]
+  },
+  "SalvatoreGanacciRemoteMenu": {
+   "type": "MESG",
+   "template": "FortPotMsg",
+   "fields": [
+    {
+     "tag": "DESC",
+     "text": "What should Salvatore Ganacci do?"
+    },
+    {
+     "tag": "FULL",
+     "text": "Ganacci Remote"
+    },
+    {
+     "tag": "ITXT",
+     "remove": true
+    },
+    {
+     "insert": [
+      {
+       "tag": "ITXT",
+       "text": "Summon him near me"
+      },
+      {
+       "tag": "ITXT",
+       "text": "Send him far away"
+      },
+      {
+       "tag": "ITXT",
+       "text": "Reset him (home, then he comes back)"
+      },
+      {
+       "tag": "ITXT",
+       "text": "Show his status"
+      },
+      {
+       "tag": "ITXT",
+       "text": "Switch test mode on/off"
+      },
+      {
+       "tag": "ITXT",
+       "text": "Close"
+      }
+     ],
+     "after": "DNAM"
+    }
+   ]
+  },
+  "SalvatoreGanacciStatusMsg": {
+   "type": "MESG",
+   "template": "DefaultDebugMSG",
+   "fields": [
+    {
+     "tag": "DESC",
+     "text": "State: %.0f\n(0 waiting, 1 haunting, 2 down, 3 carried, 4 companion)\nCondition: %.0f\nTest mode: %.0f (1 = he appears near you at once)"
+    },
+    {
+     "tag": "FULL",
+     "text": "Salvatore Ganacci"
+    }
+   ]
+  },
+  "SalvatoreGanacciRoamReady": {
+   "type": "GLOB",
+   "fields": [
+    {
+     "tag": "FNAM",
+     "u8": 115
+    },
+    {
+     "tag": "FLTV",
+     "float": 0.0
+    }
+   ]
+  },
+  "SalvatoreGanacciRoamPackage": {
+   "type": "PACK",
+   "template": "DefaultWanderEditorLocation512",
+   "fields": [
+    {
+     "tag": "PKDT",
+     "pack": "<IBBHHH",
+     "values": [
+      0,
+      5,
+      0,
+      0,
+      31,
+      0
+     ]
+    },
+    {
+     "tag": "PLDT",
+     "pack": "<iIi",
+     "values": [
+      0,
+      20,
+      512
+     ]
+    },
+    {
+     "tag": "CTDA",
+     "hex": "000000000000803f4a0000000000000000000000000000000000000000000000",
+     "after": "PSDT"
+    },
+    {
+     "tag": "CTDA",
+     "patch": [
+      [
+       12,
+       "<I",
+       "@SalvatoreGanacciRoamReady"
+      ]
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciAttackQuipSound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salvatore_attack_quip.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      30,
+      25,
+      0,
+      0,
+      4096,
+      600,
+      0,
+      0,
+      100,
+      60,
+      30,
+      10,
+      0,
+      80,
+      220,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciIdleQuipSound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salvatore_idle_quip.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      30,
+      25,
+      0,
+      0,
+      4096,
+      0,
+      0,
+      0,
+      100,
+      60,
+      30,
+      10,
+      0,
+      80,
+      220,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciIdleQuip2Sound": {
+   "type": "SOUN",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "FNAM",
+     "text": "fx\\salvatore\\salvatore_idle_quip_2.wav"
+    },
+    {
+     "tag": "RNAM",
+     "u8": 0
+    },
+    {
+     "tag": "SNDD",
+     "pack": "<BBbBIhBB5hhiii",
+     "values": [
+      30,
+      25,
+      0,
+      0,
+      4096,
+      1300,
+      0,
+      0,
+      100,
+      60,
+      30,
+      10,
+      0,
+      80,
+      220,
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  "SalvatoreGanacciThemeEmitter": {
+   "type": "ACTI",
+   "fields": [
+    {
+     "tag": "OBND",
+     "pack": "<6h",
+     "values": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "tag": "MODL",
+     "text": "salvatore\\theme_emitter.nif"
+    },
+    {
+     "tag": "SNAM",
+     "form": "@SalvatoreGanacciMusicSound"
+    }
+   ]
+  }
+ },
+ "cells": {
+  "SalvatoreGanacciHoldingCell": {
+   "name": "Salvatore Ganacci Holding Cell",
+   "objects": [
+    {
+     "ref_id": "salvatore",
+     "editor_id": "SalvatoreGanacciREF",
+     "base": "@SalvatoreGanacciCreature",
+     "persistent": true,
+     "disabled": true,
+     "position": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "ref_id": "down",
+     "editor_id": "SalvatoreGanacciDownREF",
+     "base": "@SalvatoreGanacciDownActivator",
+     "persistent": true,
+     "disabled": true,
+     "position": [
+      100,
+      0,
+      0
+     ]
+    },
+    {
+     "ref_id": "hold",
+     "editor_id": "SalvatoreGanacciHoldMarkerREF",
+     "base": "@XMarker",
+     "persistent": true,
+     "position": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "ref_id": "theme",
+     "editor_id": "SalvatoreGanacciThemeREF",
+     "base": "@SalvatoreGanacciThemeEmitter",
+     "persistent": true,
+     "disabled": true,
+     "position": [
+      300,
+      0,
+      0
+     ]
+    }
+   ]
+  }
+ },
+ "release": {}
+}

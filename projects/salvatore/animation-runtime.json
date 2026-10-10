@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "assets": "assets.json",
+  "media": "../../source/salvatore-animation",
+  "gameData": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Fallout New Vegas\\Data",
+  "fps": 24,
+  "idlePlayback": "ping-pong",
+  "selector": "managed-visibility",
+  "maxSide": 1024,
+  "speechAudio": {
+    "attack_quip": {
+      "file": "../../assets/salvatore/sound/salvatore_attack_quip.wav",
+      "install": "sound/fx/salvatore/salvatore_attack_quip.wav"
+    },
+    "idle_quip": {
+      "file": "../../assets/salvatore/sound/salvatore_idle_quip.wav",
+      "install": "sound/fx/salvatore/salvatore_idle_quip.wav"
+    },
+    "idle_quip_2": {
+      "file": "../../assets/salvatore/sound/salvatore_idle_quip_2.wav",
+      "install": "sound/fx/salvatore/salvatore_idle_quip_2.wav"
+    }
+  },
+  "mainPlayback": "ping-pong",
+  "themeEmitter": true
+}

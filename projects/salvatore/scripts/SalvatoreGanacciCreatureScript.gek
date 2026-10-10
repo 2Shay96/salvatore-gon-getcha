@@ -1,0 +1,102 @@
+scn SalvatoreGanacciCreatureScript
+
+ref rUser
+short HideBody
+; A5: append variables; poll animation action per frame to catch fast punches.
+short SpeechInit
+short AnimAction
+short IdleChoice
+short AttackSamples
+short AttackQuipsPlayed
+short IdleQuipsPlayed
+float SpeechDelta
+float VoiceBusy
+float AttackCooldown
+float IdleGap
+
+Begin OnLoad
+	SetAV DamageThreshold 5
+End
+
+Begin OnDeath
+	; leave the small Salvatore at once, standing where he fell (its collision is static, so it cannot drop)
+	SalvatoreGanacciDownREF.MoveTo SalvatoreGanacciREF 0 0 0
+	SalvatoreGanacciDownREF.Enable
+	; Queue the sting until the moved/enabled emitter has loaded.
+	set SalvatoreGanacciQuest.DefeatCuePending to 1
+	set HideBody to 1
+	set SalvatoreGanacciQuest.DeathPending to 1
+End
+
+Begin GameMode
+	; hide the big sprite two frames later (the drop needs his position for a frame)
+	if HideBody > 0
+		set HideBody to HideBody + 1
+		if HideBody >= 3
+			set HideBody to 0
+			Disable
+		endif
+	endif
+
+	set SpeechDelta to GetSecondsPassed
+	if VoiceBusy > 0
+		set VoiceBusy to VoiceBusy - SpeechDelta
+	endif
+	if AttackCooldown > 0
+		set AttackCooldown to AttackCooldown - SpeechDelta
+	endif
+	if GetDead == 0 && GetDisabled == 0 && (SalvatoreGanacciQuest.State == 1 || SalvatoreGanacciQuest.State == 4)
+		; A deployment can reuse this actor without re-running OnLoad.
+		if SpeechInit == 0 || SalvatoreGanacciQuest.ReleaseCuePending > 0
+			set SpeechInit to 1
+			set IdleGap to 2 + (GetRandomPercent * 0.08)
+			set AttackCooldown to 2
+		endif
+		set AnimAction to GetAnimAction
+		if IsInCombat == 1 || AnimAction == 2
+			; Cancel the idle countdown. A started short clip finishes naturally.
+			set IdleGap to 1 + (GetRandomPercent * 0.09)
+			if AnimAction == 2
+				set AttackSamples to AttackSamples + 1
+				if VoiceBusy <= 0 && AttackCooldown <= 0
+					; Failed rolls cannot retry every frame of the same fast attack.
+					set AttackCooldown to 1
+					if GetRandomPercent < 40
+						PlaySound3D SalvatoreGanacciAttackQuipSound
+						set VoiceBusy to 2.05
+						set AttackCooldown to 4 + (GetRandomPercent * 0.04)
+						set AttackQuipsPlayed to AttackQuipsPlayed + 1
+					endif
+				endif
+			endif
+		elseif IsMoving == 0 && SalvatoreGanacciQuest.ReleaseCuePending == 0
+			if VoiceBusy <= 0
+				set IdleGap to IdleGap - SpeechDelta
+				if IdleGap <= 0
+					set IdleChoice to GetRandomPercent
+					if IdleChoice < 50
+						PlaySound3D SalvatoreGanacciIdleQuipSound
+						set VoiceBusy to 2.05
+					else
+						PlaySound3D SalvatoreGanacciIdleQuip2Sound
+						set VoiceBusy to 2.35
+					endif
+					set IdleGap to 1 + (GetRandomPercent * 0.09)
+					set IdleQuipsPlayed to IdleQuipsPlayed + 1
+				endif
+			endif
+		endif
+	else
+		set SpeechInit to 0
+		set AttackCooldown to 0
+		set IdleGap to 0
+	endif
+
+End
+
+Begin OnActivate
+	set rUser to GetActionRef
+	if rUser.GetIsReference player && SalvatoreGanacciQuest.IsCompanion == 1
+		set SalvatoreGanacciQuest.StoreRequest to 1
+	endif
+End

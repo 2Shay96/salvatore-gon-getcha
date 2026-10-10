@@ -1,0 +1,78 @@
+{
+ "schema": 1,
+ "kind": "sprite_character_assets",
+ "note": "Base assets for Salvatore. Integrated character build: tools/build_salvatore_animation_runtime.py projects/salvatore/animation-runtime.json (see WORKFLOW R1); this base builder alone does not include managed clip switching. Paths relative to this file.",
+ "character": {
+  "id": "salvatore_ganacci",
+  "displayName": "Salvatore Ganacci",
+  "editorPrefix": "SalvatoreGanacci"
+ },
+ "clips": {
+  "dance": {
+   "frames": "../../source/S",
+   "view": "S",
+   "fps": 24
+  }
+ },
+ "stateClips": {
+  "hostile": "dance",
+  "defeated": "dance"
+ },
+ "sprites": {
+  "body": {
+   "state": "hostile",
+   "name": "creatures/salvatoreganacci/salvatorebody",
+   "frameUnits": 195,
+   "prn": "Scene Root",
+   "offsetZ": 0,
+   "rootName": "SalvatoreBody"
+  },
+  "down": {
+   "state": "defeated",
+   "name": "salvatore/salvatore_down",
+   "frameUnits": 42,
+   "rootName": "SalvatoreDown",
+   "reuseTextureOf": "body",
+   "collision": {
+    "template": "meshes\\clutter\\ashtray\\ashtray01.nif",
+    "box": [
+     10,
+     10,
+     8
+    ],
+    "material": "organic",
+    "static": true
+   }
+  }
+ },
+ "skeleton": {
+  "source": "creatures\\mistergutsy",
+  "name": "SalvatoreGanacci",
+  "replaceSound": {
+   "NPCRobotMrHandyAttackSaw": "FXSwingMedium"
+  },
+  "hitSound": "WPNPowerFistFire3D"
+ },
+ "audio": {
+  "music_loop": {
+   "file": "../../assets/salvatore/sound/salv_music_lp.wav",
+   "install": "sound/fx/salvatore/salv_music_lp.wav"
+  },
+  "defeated_loop": {
+   "file": "../../assets/salvatore/sound/salvatore_dead_loop.wav",
+   "install": "sound/fx/salvatore/salv_deadloop_lp.wav"
+  },
+  "defeat_sting": {
+   "file": "../../assets/salvatore/sound/defeated_sound_effect.wav",
+   "install": "sound/fx/salvatore/salv_defeated.wav"
+  },
+  "release": {
+   "file": "../../assets/salvatore/sound/res_sound_effect.wav",
+   "install": "sound/fx/salvatore/salv_release.wav"
+  }
+ },
+ "icon": {
+  "file": "../../assets/salvatore/icons/salvatore.dds",
+  "install": "textures/interface/icons/pipboyimages/weapons/salvatore.dds"
+ }
+}
