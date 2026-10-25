@@ -9,4 +9,9 @@ Torso-only VATS included; unresolved 0% VATS chance explicitly disclosed.
 Source spec, nine scripts, compiled cache, stable IDs, shoe frames, audio and native source updated.
 Tested runtime bytes retained; full clean source reproduction not verified.
 v1.0 release/tag preserved. Earlier briefing retained in docs/history/STATUS-before-v11-20261025.md.
-Next action: finish and verify GitHub v1.1 publication.
+Published: https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.1
+Tag points to source snapshot 766eea2. ZIP and checksum attached; marked Latest.
+Unauthenticated public ZIP download verified: size/SHA256/64 entries/CRC all pass.
+Seven public asset tests and 28 workshop lifecycle/equipment/shoe tests pass.
+Private workshop backup 0c8d664 pushed on existing backup branch; no merge.
+Next action: complete.
