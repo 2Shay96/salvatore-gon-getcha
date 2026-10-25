@@ -1,17 +1,16 @@
 scn SalvatoreGanacciQuestScript
 
-; Salvatore Ganacci - state machine (vanilla GECK scripting, no NVSE).
+; Salvatore Ganacci - state machine (native xNVSE click transaction).
 ; State: 0 waiting to haunt, 1 haunting (hostile boss), 2 down on the ground (pickup),
 ;        3 carried as a weapon, 4 deployed companion.
-; Console helpers while testing (the console cannot find this mod's quests by name, so use the
-; FormIDs from projects/salvatore/V1_CHECKLIST.md; each command quest stops itself again):
-;   startquest <SalvatoreGanacciCmdSummon>  -> bring him about 1500 units from the player
+; Console helpers: use the actual runtime prefix; each command quest stops itself again.
+;   startquest <SalvatoreGanacciCmdSummon>  -> fetch existing companion/down sprite, or summon boss
 ;   startquest <SalvatoreGanacciCmdFar>     -> send him to the map marker farthest from the player
 ;   startquest <SalvatoreGanacciCmdReset>   -> send him home and start over
 ;   TestMode (set to 0 on first run): release timing; the Remote switches it.
 ;   TestMode 1: he appears ~1500 units away at once.
-; The Ganacci Remote (aid item, given once) does the same from a menu, plus status and test mode;
-; console commands by FormID failed on the Windows PC (5 Oct), so the remote is the test tool.
+; The optional Ganacci Remote (console-obtainable aid item) provides a menu and test mode;
+; Numeric console lookup works with the verified runtime load index.
 
 short Init
 short State
@@ -63,30 +62,142 @@ float CueDelta
 ; Retired A5b variables retained in place for saved-game compatibility.
 short ThemeMode
 float ThemeHold
+; M3: append only. Stage 0 watching, 1 countdown, 2 encounter already used.
+short AnimalVersion
+short AnimalStage
+short AnimalHitPending
+; M4: persisted one-way entrance latch: 0 undecided, 1 riding, 2 normal.
+short ShoeStage
+float ShoeArmDelay
+short ShoeVisualActive
+; M6: append only; base-game equipment tracker preserves weapon selection on deployment.
+ref LastPlayerWeapon
+short RestoreWeaponPending
+; Native bridge contract v1; append only.
+short NativeVersion
+short NativeDeploy
 
 Begin GameMode
 
+	set NativeVersion to 1
+	; Retire base-form restoration without removing its saved variable slots.
+	set RestoreWeaponPending to 0
+	set DropPending to 0
+	StopQuest SalvatoreGanacciEquipmentQuest
+	StopQuest SalvatoreGanacciEquipmentMenuQuest
+
 	set CueDelta to GetSecondsPassed
+	if ShoeArmDelay > 0
+		set ShoeArmDelay to ShoeArmDelay - CueDelta
+	endif
+	; The cosmetic ref can never outlive the active unowned shoe phase.
+	if State != 1 || ShoeStage != 1 || SalvatoreGanacciREF.GetDead == 1 || player.GetItemCount SalvatoreGanacciWeapon > 0
+		if ShoeVisualActive == 1 || SalvatoreGanacciShoeREF.GetDisabled == 0
+			SalvatoreGanacciShoeREF.Disable
+			SalvatoreGanacciREF.SetActorAlpha 1
+			set ShoeVisualActive to 0
+		endif
+	endif
 
 	if Init == 0
 		set Init to 1
 		set TestMode to 0
 		set Condition to 100
-		set SpawnDay to GameDaysPassed + 1 + (GetRandomPercent * 0.02)
+		set SpawnDay to 0
+		set AnimalVersion to 1
+		ShowMessage SalvatoreGanacciWatchingMsg
+	endif
+	; Upgrades preserve the already scheduled v1.0/M2 encounter and all owned states.
+	if AnimalVersion == 0
+		set AnimalVersion to 1
+		if State == 0
+			set AnimalStage to 1
+		else
+			set AnimalStage to 2
+		endif
+	endif
+	if State >= 1 || player.GetItemCount SalvatoreGanacciWeapon > 0
+		set AnimalStage to 2
+	endif
+	if AnimalHitPending == 1
+		set AnimalHitPending to 0
+		if AnimalStage == 0 && State == 0 && player.GetItemCount SalvatoreGanacciWeapon == 0
+			set AnimalStage to 1
+			set SpawnDay to GameDaysPassed + 1 + (GetRandomPercent * 0.02)
+			ShowMessage SalvatoreGanacciAnimalWarningMsg
+			PlaySound SalvatoreGanacciEagleWarningSound
+		endif
+	endif
+
+	; v1.1: a carried weapon owns the lifecycle, including old Reset/Summon saves.
+	; Never consume duplicates or rewrite item condition while reconciling ownership.
+	if player.GetItemCount SalvatoreGanacciWeapon > 0
+		if State != 3 || SalvatoreGanacciREF.GetDisabled == 0
+			SalvatoreGanacciREF.SetPlayerTeammate 0
+			SalvatoreGanacciREF.Disable
+			SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
+		endif
+		SalvatoreGanacciDownREF.Disable
+		set State to 3
+		set IsCompanion to 0
+		set DeathPending to 0
+		set DeathStage to 0
+		set PickupPending to 0
+		set StoreRequest to 0
+		set DownStage to 0
+		set Spawned to 0
+		set DefeatCuePending to 0
+		set ReleaseCuePending to 0
+	endif
+	; Requests from another representation must not survive until a later transition.
+	if State != 2
+		set PickupPending to 0
+	endif
+	if State != 3
+		set DropPending to 0
+	endif
+	if State != 4
+		set StoreRequest to 0
 	endif
 
 	if Reset == 1
 		set Reset to 0
-		SalvatoreGanacciREF.SetPlayerTeammate 0
-		SalvatoreGanacciREF.Disable
-		SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
-		if SalvatoreGanacciREF.GetDead == 1
-			SalvatoreGanacciREF.Resurrect
+		set SummonNear to 0
+		set FarRequest to 0
+		set Spawned to 0
+		set DropPending to 0
+		set PickupPending to 0
+		set StoreRequest to 0
+		set DeathStage to 0
+		set DefeatCuePending to 0
+		set ReleaseCuePending to 0
+		if State == 3
+			; Owned item stays owned, even if stored outside the player's inventory.
+			SalvatoreGanacciREF.SetPlayerTeammate 0
+			SalvatoreGanacciREF.Disable
+			SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
+			SalvatoreGanacciDownREF.Disable
+			set IsCompanion to 0
+			set DeathPending to 0
+		elseif State == 2
+			; Keep the existing defeated representation and its condition.
+			set SummonNear to 1
+		elseif State == 4
+			; Keep ownership and health; death processing below still has priority.
+			set SummonNear to 1
+		else
+			SalvatoreGanacciREF.SetPlayerTeammate 0
+			SalvatoreGanacciREF.Disable
+			SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF
+			if SalvatoreGanacciREF.GetDead == 1
+				SalvatoreGanacciREF.Resurrect
+			endif
+			SalvatoreGanacciDownREF.Disable
+			set DeathPending to 0
+			set IsCompanion to 0
+			set DownStage to 0
+			set State to 0
 		endif
-		SalvatoreGanacciDownREF.Disable
-		set IsCompanion to 0
-		set DownStage to 0
-		set State to 0
 	endif
 
 	; his body goes away two frames after the defeated sprite has been placed where he fell
@@ -98,10 +209,9 @@ Begin GameMode
 		set DeathStage to 2
 	endif
 
-	; ---------------- Ganacci Remote: given once; using it opens the menu ----------------
+	; ---------------- Optional Remote: no automatic grant; retain old copies on upgrades ----------------
 	if GiveRemote == 0
 		set GiveRemote to 1
-		player.AddItem SalvatoreGanacciRemote 1 1
 	endif
 	if MenuRequest == 1
 		set MenuRequest to 0
@@ -146,18 +256,26 @@ Begin GameMode
 		if player.IsInInterior == 0 && player.GetInWorldspace WastelandNV == 1
 			if TestMode == 1
 				set SummonNear to 1
-			elseif GameDaysPassed >= SpawnDay
+			elseif AnimalStage == 1 && GameDaysPassed >= SpawnDay
 				set FarRequest to 1
 			endif
 		endif
 	endif
 
-	; near: about 1500 units from the player
+	; Fetch owned representations without changing condition, health or allegiance.
+	; A carried item is already retrieved. Only unowned states initiate an encounter.
 	if SummonNear == 1
 		set SummonNear to 0
-		if State <= 1
-			SalvatoreGanacciREF.MoveTo player 1500 0 0
+		if State <= 1 && player.GetItemCount SalvatoreGanacciWeapon == 0
+			SalvatoreGanacciREF.MoveTo player 3500 0 0
 			set Spawned to 1
+		elseif State == 2
+			SalvatoreGanacciDownREF.MoveTo player 120 0 0
+			SalvatoreGanacciDownREF.Enable
+		elseif State == 4 && IsCompanion == 1 && SalvatoreGanacciREF.GetDead == 0 && DeathPending == 0
+			SalvatoreGanacciREF.MoveTo player 120 0 0
+			SalvatoreGanacciREF.Enable
+			SalvatoreGanacciREF.EvaluatePackage
 		endif
 	endif
 
@@ -165,7 +283,7 @@ Begin GameMode
 	; (GetPos on a marker in an unloaded cell is not reliable, which made him always pick Goodsprings).
 	if FarRequest == 1
 		set FarRequest to 0
-		if State <= 1 && player.IsInInterior == 0 && player.GetInWorldspace WastelandNV == 1
+		if State <= 1 && player.GetItemCount SalvatoreGanacciWeapon == 0 && player.IsInInterior == 0 && player.GetInWorldspace WastelandNV == 1
 			set px to player.GetPos x
 			set py to player.GetPos y
 			set BestDist to -1
@@ -232,12 +350,18 @@ Begin GameMode
 
 	if Spawned == 1
 		set Spawned to 0
+		if State <= 1 && player.GetItemCount SalvatoreGanacciWeapon == 0
 		SalvatoreGanacciREF.Enable
 		SalvatoreGanacciREF.SetPlayerTeammate 0
 		SalvatoreGanacciREF.SetAV Aggression 2
 		SalvatoreGanacciREF.EvaluatePackage
 		set IsCompanion to 0
 		set State to 1
+		set AnimalStage to 2
+		; MoveTo/Enable can finish after this frame. Decide entrance distance afterwards.
+		set ShoeStage to 0
+		set ShoeArmDelay to 0.5
+		endif
 	endif
 
 	; ---------------- 1: haunting - he follows the player (package) and fights on sight ----------------
@@ -252,6 +376,7 @@ Begin GameMode
 	; ---------------- death (boss or companion): leave a small Salvatore on the ground ----------------
 	if DeathPending == 1
 		set DeathPending to 0
+		if State == 1 || State == 4
 		if IsCompanion == 1
 			set Condition to Condition - 33.34
 			if Condition < 1
@@ -265,6 +390,7 @@ Begin GameMode
 		set Timer to 1.2
 		set DownStage to 1
 		set State to 2
+		endif
 	endif
 
 	; ---------------- 2: down on the ground: defeat sting, then the dead loop, until picked up ----------------
@@ -278,7 +404,9 @@ Begin GameMode
 		if PickupPending == 1
 			set PickupPending to 0
 			set HealthFrac to Condition / 100
-			player.AddItemHealthPercent SalvatoreGanacciWeapon 1 HealthFrac
+			if player.GetItemCount SalvatoreGanacciWeapon == 0
+				player.AddItemHealthPercent SalvatoreGanacciWeapon 1 HealthFrac
+			endif
 			SalvatoreGanacciDownREF.Disable
 			SalvatoreGanacciDownREF.MoveTo SalvatoreGanacciHoldMarkerREF
 			set DownStage to 0
@@ -286,20 +414,10 @@ Begin GameMode
 		endif
 	endif
 
-	; ---------------- 3: carried; equipping (or dropping) him deploys the companion ----------------
-	if State == 3
-		if DropPending == 1
-			set DropPending to 0
-			if player.GetItemCount SalvatoreGanacciWeapon > 0
-				player.EquipItem SalvatoreGanacciWeapon 0 1
-			endif
-		elseif player.GetEquipped SalvatoreGanacciWeapon == 1
-			set Condition to player.GetWeaponHealthPerc
-			player.UnequipItem SalvatoreGanacciWeapon 0 1
-			if Condition < 1
-				ShowMessage SalvatoreGanacciTooBatteredMsg
-			else
-				player.RemoveItem SalvatoreGanacciWeapon 1 1
+	; Native bridge consumes the sole validated item synchronously on a game loop.
+	; The saved latch survives a save before this quest next runs. No gun operations.
+	if NativeDeploy == 1
+		if State == 3 && player.GetItemCount SalvatoreGanacciWeapon == 0 && Condition >= 1
 				SalvatoreGanacciREF.MoveTo player 120 0 0
 				SalvatoreGanacciREF.Enable
 				if SalvatoreGanacciREF.GetDead == 1
@@ -313,8 +431,8 @@ Begin GameMode
 				set ReleaseCuePending to 1
 				set IsCompanion to 1
 				set State to 4
-			endif
 		endif
+		set NativeDeploy to 0
 	endif
 
 	; ---------------- 4: companion; activating him puts him back in the inventory ----------------
@@ -322,7 +440,9 @@ Begin GameMode
 		if StoreRequest == 1
 			set StoreRequest to 0
 			set HealthFrac to Condition / 100
-			player.AddItemHealthPercent SalvatoreGanacciWeapon 1 HealthFrac
+			if player.GetItemCount SalvatoreGanacciWeapon == 0
+				player.AddItemHealthPercent SalvatoreGanacciWeapon 1 HealthFrac
+			endif
 			SalvatoreGanacciREF.SetPlayerTeammate 0
 			SalvatoreGanacciREF.Disable
 			SalvatoreGanacciREF.MoveTo SalvatoreGanacciHoldMarkerREF

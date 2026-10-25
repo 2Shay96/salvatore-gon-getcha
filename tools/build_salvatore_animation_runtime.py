@@ -120,6 +120,17 @@ def main():
         check.read(io.BytesIO(target.read_bytes()))
         assert len(check.blocks) == 1 and isinstance(check.roots[0], N.NiNode)
         assert check.roots[0].num_children == 0 and check.roots[0].collision_object is None
+    if config.get('shoe'):
+        from salvatore_shoe_assets import apply
+        manifest['shoeRuntime'] = apply(config, media, out)
+    if config.get('vatsScaleGates'):
+        assert not config.get('vatsAlphaGates'), 'Choose one clip gating method'
+        from salvatore_vats_assets import apply
+        manifest['vatsScaleGates'] = apply(out)
+    if config.get('vatsAlphaGates'):
+        from salvatore_alpha_assets import apply
+        manifest.pop('vatsScaleGates', None)
+        manifest['vatsAlphaGates'] = apply(out, alpha_only=config.get('alphaOnlySelection', False))
     manifest['files'] = {p.relative_to(out).as_posix().lower(): {'size': p.stat().st_size, 'sha256': sha(p)}
                          for p in assets.installable(out)}
     manifest['animationRuntime'] = {'config': str(config_path), 'fps': 24, 'selector': 'managed-visibility',

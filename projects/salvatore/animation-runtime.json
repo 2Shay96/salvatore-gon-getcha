@@ -19,8 +19,20 @@
     "idle_quip_2": {
       "file": "../../assets/salvatore/sound/salvatore_idle_quip_2.wav",
       "install": "sound/fx/salvatore/salvatore_idle_quip_2.wav"
+    },
+    "eagle_warning": {
+      "file": "../../assets/salvatore/sound/salvatore_eagle_warning.wav",
+      "install": "sound/fx/salvatore/salvatore_eagle_warning.wav"
     }
   },
   "mainPlayback": "ping-pong",
-  "themeEmitter": true
+  "themeEmitter": true,
+  "shoe": {
+    "folder": "salvatore_shoe_sprites",
+    "playback": "ping-pong",
+    "frameUnits": 320,
+    "switchUnits": 700
+  },
+  "vatsAlphaGates": true,
+  "alphaOnlySelection": true
 }

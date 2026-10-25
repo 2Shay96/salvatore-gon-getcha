@@ -1,6 +1,6 @@
 {
  "plugin": "SalvatoreGanacci.esp",
- "next": "000839",
+ "next": "000849",
  "assigned": {
   "SalvatoreGanacciMusicSound": "000800",
   "SalvatoreGanacciDeadLoopSound": "000801",
@@ -38,7 +38,23 @@
   "SalvatoreGanacciIdleQuipSound": "000835",
   "SalvatoreGanacciIdleQuip2Sound": "000836",
   "SalvatoreGanacciThemeEmitter": "000837",
-  "REFR:SalvatoreGanacciHoldingCell:theme": "000838"
+  "REFR:SalvatoreGanacciHoldingCell:theme": "000838",
+  "SalvatoreGanacciDuplicateMsg": "000839",
+  "SalvatoreGanacciAnimalHit": "00083A",
+  "SalvatoreGanacciBrahminHit": "00083B",
+  "SalvatoreGanacciWatchingMsg": "00083C",
+  "SalvatoreGanacciAnimalWarningMsg": "00083D",
+  "SalvatoreGanacciShoeRide": "00083E",
+  "SalvatoreGanacciShoeExit": "00083F",
+  "SalvatoreGanacciShoeDebugMsg": "000840",
+  "SalvatoreGanacciShoeVisual": "000841",
+  "REFR:SalvatoreGanacciHoldingCell:shoe": "000842",
+  "SalvatoreGanacciEagleWarningSound": "000843",
+  "SalvatoreGanacciEquipmentQuest": "000844",
+  "SalvatoreGanacciWeaponTrackerScript": "000845",
+  "SalvatoreGanacciWeaponMenuScript": "000846",
+  "SalvatoreGanacciEquipmentMenuQuest": "000847",
+  "SalvatoreGanacciTorsoBodyPartData": "000848"
  },
  "retired": {
   "SalvatoreGanacciDownLoop": "000809",

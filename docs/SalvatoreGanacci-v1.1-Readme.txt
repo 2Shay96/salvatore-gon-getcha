@@ -1,0 +1,109 @@
+SALVATORE GANACCI v1.1
+Author: 2Shay. Release prepared 25 October 2026.
+
+REQUIREMENTS
+Fallout: New Vegas Steam 1.4.0.525, FalloutNV.esm, and xNVSE 6.4.9 or newer
+6.x. Launch through your working xNVSE/4GB setup. No DLC, ShowOff, JIP,
+JohnnyGuitar or GECK MCP companion is required. xNVSE is not bundled.
+The SalvatoreGanacci.dll included in NVSE/Plugins is required.
+
+INSTALL / UPDATE
+Close FNV. Back up your saves and retain the previous mod archive.
+Install this complete ZIP with Vortex, replacing earlier Salvatore versions.
+Enable SalvatoreGanacci.esp and let this package win its asset conflicts.
+Disable development probe/filming plugins for ordinary play. Restart FNV
+through xNVSE. Do not combine several Salvatore packages as separate versions.
+This ZIP uses the Data-root layout; manual installation uses the same paths.
+No automatic removal of existing duplicate items or save cleanup is performed.
+
+MAIN EXPERIENCE
+On a fresh save: "Salvatore Ganacci is watching. Be kind to animals.
+This is not a suggestion."
+The first qualifying player attack on a supported peaceful animal plays
+the eagle warning and starts one 1-3 game-day countdown. Further attacks
+do not restart the timer or repeat the screech. Arrival waits for outdoors
+in the main Mojave. Standard Brahmin and selected peaceful Goodsprings /
+Jacobstown Bighorner bases are supported. Accidents count; companion hits,
+mod-added species and universal trap/explosion coverage are not supported.
+There is one natural encounter per save; owning Salvatore prevents another.
+
+Far away, he approaches on the shoe. Its 37 frames loop forward/backward
+at 24 fps over three seconds, without repeated endpoints. At about 10m,
+he switches once to his regular sprites. Idle and dancing also ping-pong.
+Fixed-size alpha-tested clip selection avoids scale easing and the observed
+idle/dancing visibility gap. The current visual appearance is owner accepted.
+
+Defeat and collect him. With exactly one Salvatore carried, LEFT-CLICK his
+Weapons entry normally, acknowledge the popup and close Pip-Boy to deploy.
+Your selected gun, exact inventory copy, condition and attachments are left
+alone. Activate the companion to store him. Actual repaired Salvatore
+condition is read from the clicked item; use ordinary weapon/merchant repair.
+Duplicates and condition below 1% refuse deployment without consumption.
+Drop is an ordinary inventory action. Hotkey/console equipping Salvatore
+is outside the supported deployment interface.
+
+OPTIONAL REMOTE / RECOVERY
+New saves receive no automatic Remote; existing copies remain available.
+The optional Aid Remote and state-aware fetch quest remain console-accessible.
+Run GetModIndex "SalvatoreGanacci.esp" in this game session; use its two-digit
+hexadecimal index in place of XX below. Never type XX literally or reuse an
+old prefix after changing load order.
+  player.additem XX00082F 1   Optional Ganacci Remote
+  startquest XX000818        Retrieve existing representation; carried is a no-op
+  sqv XX00080F               Inspect main quest
+Do not use placeatme/additem to create replacement actors/items for recovery.
+Reset is not condition repair or automatic duplicate cleanup.
+
+UPGRADES / LIMITS
+Plugin filename, FormIDs and prior script variable positions are retained.
+NativeVersion/NativeDeploy are appended. Old tracker records remain but their
+quests are stopped. Existing v1.0 countdowns and initialized states retain
+their saved progression; an upgrade need not replay a fresh-install message.
+Keep original saves: broad v1.0 upgrade combinations are not fully tested.
+Existing broken duplicate saves require conservative manual recovery.
+
+Owner acceptance includes normal-click deploy/store/redeploy, merchant repair,
+carried/deployed save/reload, fists, Mercenary grenade launcher, duplicate
+laser-pistol copies, a suppressor-bearing sniper, a retextured .357, duplicate
+Salvatore refusal, broken-item refusal, visual follow-up and shoe loop/10m switch.
+This is not a guarantee for every mod-added weapon or competing inventory hook.
+New-form weapon mods and interrupted-request edge cases remain untested in-game;
+nonzero condition below 1% has host-side checks, not a separate live test.
+Animal detection overrides 23 vanilla creature script bindings and may conflict
+with creature overhauls. No universal repair-bag compatibility is claimed.
+Broader terrain/obstacle, far-phase defeat, travel/audio and upgrade cases retain
+their existing test limits. Optional companion-only distribution is deferred.
+
+VATS KNOWN ISSUE
+Only Torso is offered as a VATS target; inherited robot limbs, sensors and
+combat inhibitor are removed for Salvatore only. VATS currently reports 0%
+hit chance against Salvatore with guns and unarmed attacks. This is a known
+unresolved bug: torso selection does not mean VATS attacks work. Fight him
+outside VATS. Normal NPC VATS was checked separately and works.
+
+DIAGNOSTICS / ROLLBACK
+Native log: game folder/SalvatoreGanacci-native.log (replaced at each launch).
+A successful deployment logs CANCEL, COMMIT and DEPLOY_COMPLETE with sameGun=1.
+Incompatible runtime or an existing conflicting hook is refused, not overwritten.
+If the DLL cannot load, normal-click cancellation is unavailable.
+For rollback, close FNV, restore the complete previous package through your mod
+manager, and load an untouched compatible backup save. Prefer a pre-mod save
+for uninstall; do not remove unrelated shared assets.
+
+CREDITS AND PERMISSIONS
+Mod author and media preparation: 2Shay. The imagery depicts Salvatore Ganacci
+and is not 2Shay's original artwork. Theme music is the artist's work, used
+with satirical/parody intent; 2Shay will replace challenged music with
+copyright-free work. This intent grants no third-party reuse rights.
+Fallout: New Vegas and its game assets are Bethesda/Obsidian material.
+This is an unofficial fan mod; no rights to reuse third-party art/audio are
+granted here. Native code uses the bundled SalvatoreGanacci-Native-LICENSE.txt;
+its MIT terms do not relicense the game's assets or other media.
+
+EAGLE / HAWK CALL CREDIT
+"Hawk Screech Valley" by Mike Koenig, SoundBible.com:
+https://soundbible.com/1845-Hawk-Screech-Valley.html
+Creative Commons Attribution 3.0:
+https://creativecommons.org/licenses/by/3.0/
+Provided MP3 converted to mono 44.1kHz 16-bit PCM WAV, trimmed to 2.2 seconds
+and faded over the final 0.05 seconds. This sound retains its CC BY 3.0 terms.

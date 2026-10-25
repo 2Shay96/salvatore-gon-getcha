@@ -1,56 +1,44 @@
-# Salvatore Gonâ€™ Getcha â€” Sprite Companion
+# Salvatore Gon’ Getcha — Sprite Companion
 
 A Fallout: New Vegas mod by **2Shay**, made with [Sprite Forge Studio](https://github.com/2Shay96/sprite-forge) and GECK.
 
-He finds you. He fights you. Then he fits in your inventory.
+Harm a peaceful animal and Salvatore comes for you in 1–3 game days. Defeat him, collect him, then left-click his Weapons entry to deploy a dancing sprite companion without changing your selected gun.
 
-Salvatore hunts you across the Mojave after 1â€“3 in-game days. Defeat him, collect him, then equip the item to deploy a dancing billboard sprite companion. He follows, fights and explores nearby while you stand still.
+## Download v1.1
 
-## Download v1.0
+Download **SalvatoreGanacci-v1.1.zip** from [Nexus Mods](https://www.nexusmods.com/newvegas/mods/99947) or [GitHub Releases](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.1). The automatic source archives are for developers.
 
-Download **SalvatoreGanacci-v1.0.zip** from [Nexus Mods](https://www.nexusmods.com/newvegas/mods/99947) or [GitHub Releases](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0).
-Install with your mod manager and enable `SalvatoreGanacci.esp`, then restart the game. Requires Fallout: New Vegas only; no DLC or NVSE required.
-Use a save from before installation for a fresh start. The Ganacci Remote is added to your Aid tab.
+Requires Steam Fallout: New Vegas 1.4.0.525 and **xNVSE 6.4.9 or newer 6.x**. The required SalvatoreGanacci DLL is bundled. No DLC, ShowOff, JIP, JohnnyGuitar or GECK MCP companion is required.
 
-## Features
+Close the game, back up saves, and replace older Salvatore packages with this complete ZIP using your mod manager. Enable SalvatoreGanacci.esp and launch through xNVSE. Manual installation uses the ZIP’s Data-root layout, including NVSE/Plugins. Keep untouched saves for rollback; broad v1.0 upgrade combinations are not fully tested.
 
-- Separate main, idle and attack animations; main and idle use forward/backward loops at 24 fps.
-- Constant spatial theme, an occasional attack quip and two random idle sounds.
-- Defeated collectible, deploy/store loop and repairable companion condition (66%, 33%, 0%).
-- Companion following, fighting and idle exploration.
-- Ganacci Remote for status, relocation, encounter reset and test mode.
+## What changed
 
-## Known issues
+- Peaceful-animal trigger, eagle warning and one 1–3 day countdown.
+- Shoe approach with a smooth forward/backward loop; switches to regular sprites at about 10m.
+- Stable, opaque animation selection without the observed idle/dancing disappearance.
+- Normal-click deployment preserves the exact selected gun, condition and attachments; actual repaired Salvatore condition is read from the clicked item.
+- Duplicate and broken-item deployment refusal; carried/deployed save and reload checks passed.
+- Torso is the only VATS target; robot limbs, sensors and combat inhibitor are removed.
 
-Remote relocation while carrying Salvatore can create duplicates with shared broken condition. Avoid Send away/Summon while carrying him; a fix is planned for v1.1. Repair-bag compatibility is untested. Music continues in menus, scripted pickup can be silent, and a brief first-appearance flicker can occur.
+**Known issue: VATS reports 0% hit chance against Salvatore, including unarmed attacks. Fight him outside VATS. Torso-only selection does not fix accuracy.**
 
-See [the v1.0 readme](docs/SalvatoreGanacci-Readme.txt) for full instructions.
-The optional filming plugin is excluded from this release.
+Read [full v1.1 instructions, credits and limits](docs/SalvatoreGanacci-v1.1-Readme.txt). The optional Remote is no longer automatically added to new saves. Filming and diagnostic probes are excluded. [v1.0 remains available](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0).
 
-## Making sprites
+## Source and validation
 
-This sprite mod was made with [Sprite Forge Studio](https://github.com/2Shay96/sprite-forge). The tool is not needed to play the mod. Its Nexus link will be added when Sprite Forge Studio v1.0 is published.
-The [Salvatore Nexus page](https://www.nexusmods.com/newvegas/mods/99947) includes screenshots and the [showcase video](https://youtu.be/BFRHDjeNHd4). Deathclaw footage uses a separate filming add-on with invulnerability and increased damage; that add-on is excluded from this v1.0 download.
+This is a scoped source snapshot; private workshop projects, local profiles, logs, extracted Bethesda assets and build outputs are excluded. Stable FormIDs and old script-variable positions are preserved. Native source and MIT licence are in [native-plugin](projects/salvatore/native-plugin/README.md).
 
-## Source and building
+Python sources use Python 3.12, Pillow, PyFFI and the [GECK MCP bridge](https://github.com/2Shay96/geck-mcp-nv). Set GECK_BRIDGE_ROOT to that checkout’s bridge directory; set your own gameData path in animation-runtime.json. Script compilation requires GECK. Native builds use Zig 0.14.1. Source scripts previously generated by workshop tools are included directly in scripts/.
 
-This repository contains a scoped v1.0 source snapshot, media inputs, stable FormIDs, compiled script cache and asset build tools. It does not contain the private workshop's other projects or history, game archives, extracted vanilla meshes or generated build output.
+The animation builder and spec are supplied for development. A complete clean-checkout reproduction of the final packaged skeleton/ESP has not been verified; the distributed ZIP retains accepted runtime bytes rather than claiming a fresh build. Original game assets must be obtained from your own installation and must not be committed.
 
-For source builds use Windows, Python 3.12, Pillow, PyFFI and the public [GECK MCP bridge](https://github.com/2Shay96/geck-mcp-nv) v0.2.1 or newer. Set `GECK_BRIDGE_ROOT` to that checkout's `bridge` folder. The bridge supplies the NIF/ESP implementation and creature skeleton tools. You need your own Fallout: New Vegas installation; adjust `gameData` in `projects/salvatore/animation-runtime.json` if necessary.
-
-```powershell
-$env:GECK_BRIDGE_ROOT = 'C:/path/to/geck-mcp-nv/bridge'
-py -3.12 tools/build_salvatore_animation_runtime.py projects/salvatore/animation-runtime.json
-py -3.12 build_plugin.py projects/salvatore/salvatore.spec.json --state state
-```
-
-The asset builder reads original game archives to create the skeleton/collision outputs locally. Do not commit extracted game material. Script changes require a clean GECK compile through the bridge before rebuilding; the included cache corresponds to accepted v1.0. Live GECK operations need a project profile configured for your paths; do not use the private workshop's Windows profiles verbatim.
-
-Validation: accepted v1.0 passed six user game-regression checks and seven asset unit tests. The release ZIP has 57 entries: 55 runtime assets, plugin and readme. Its checksum and file hashes are in [release-manifest.json](release-manifest.json).
+Owner acceptance covers deploy/store, repair, save/reload, launcher/fists, duplicate gun instances, a suppressed sniper, a retextured .357, duplicate/broken refusal, stable visuals and the shoe loop/10m switch. Not every mod-added weapon or competing inventory hook is tested. See release-manifest.json for all 64 ZIP entries and hashes.
 
 ## Credits and permissions
 
-Mod author/media preparation: 2Shay. Some sound effects come from [Pixabay](https://pixabay.com/sound-effects/) and its creators. Individual source links will be added if recovered.
-Salvatore Ganacci imagery and artist theme music belong to their respective rights holders. The image is not 2Shay's original artwork. The theme is used with satirical/parody intent; challenged music will be replaced with copyright-free work. No third-party reuse permission is granted.
-Fallout: New Vegas is Bethesda/Obsidian material. This is an unofficial fan mod; no endorsement implied.
-Code reuse terms remain unconfirmed; publication does not add a blanket licence to third-party media.
+Author/media preparation: 2Shay. [Showcase](https://youtu.be/BFRHDjeNHd4); the filming-only combat boost is excluded. Native code is MIT; this does not license third-party media.
+
+“Hawk Screech Valley” by Mike Koenig, [SoundBible](https://soundbible.com/1845-Hawk-Screech-Valley.html), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/): converted to mono 44.1kHz 16-bit PCM WAV, trimmed to 2.2s, final 0.05s fade. Other sound effects include Pixabay sources; see the retained v1.0 credits.
+
+Salvatore Ganacci imagery and theme belong to their rights holders; satirical/parody intent grants no third-party reuse rights. Fallout: New Vegas is Bethesda/Obsidian material. Unofficial fan mod; no endorsement implied. See the full readme for credits and permissions.

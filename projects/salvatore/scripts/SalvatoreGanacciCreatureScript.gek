@@ -13,12 +13,29 @@ float SpeechDelta
 float VoiceBusy
 float AttackCooldown
 float IdleGap
+; M4: append variables; shoe is visual-only on this same persistent actor.
+short ShoePlaying
+float ShoeRetry
+short ShoeDebugShown
+float ShoeX
+float ShoeY
+float ShoeZ
 
 Begin OnLoad
 	SetAV DamageThreshold 5
+	set ShoePlaying to 0
+	set ShoeRetry to 0
+	SetActorAlpha 1
+	SalvatoreGanacciShoeREF.Disable
+	set SalvatoreGanacciQuest.ShoeVisualActive to 0
 End
 
 Begin OnDeath
+	SalvatoreGanacciShoeREF.Disable
+	SetActorAlpha 1
+	set SalvatoreGanacciQuest.ShoeVisualActive to 0
+	set ShoePlaying to 0
+	if player.GetItemCount SalvatoreGanacciWeapon == 0 && (SalvatoreGanacciQuest.State == 1 || SalvatoreGanacciQuest.State == 4)
 	; leave the small Salvatore at once, standing where he fell (its collision is static, so it cannot drop)
 	SalvatoreGanacciDownREF.MoveTo SalvatoreGanacciREF 0 0 0
 	SalvatoreGanacciDownREF.Enable
@@ -26,15 +43,70 @@ Begin OnDeath
 	set SalvatoreGanacciQuest.DefeatCuePending to 1
 	set HideBody to 1
 	set SalvatoreGanacciQuest.DeathPending to 1
+	endif
 End
 
 Begin GameMode
+	; Decide once per save/encounter; companion deployment never uses the entrance.
+	if GetDead == 0 && GetDisabled == 0
+		if SalvatoreGanacciQuest.ShoeArmDelay > 0
+			set ShoeDebugShown to 0
+		endif
+		if SalvatoreGanacciQuest.State == 1 && SalvatoreGanacciQuest.ShoeStage == 0 && SalvatoreGanacciQuest.ShoeArmDelay <= 0
+			if GetDistance player > 700 && player.IsInInterior == 0
+				set SalvatoreGanacciQuest.ShoeStage to 1
+			else
+				set SalvatoreGanacciQuest.ShoeStage to 2
+			endif
+		endif
+		if SalvatoreGanacciQuest.ShoeStage == 1
+			if GetDistance player <= 700 || player.IsInInterior == 1 || SalvatoreGanacciQuest.State != 1
+				set SalvatoreGanacciQuest.ShoeStage to 2
+			endif
+		endif
+		if SalvatoreGanacciQuest.State == 1 && SalvatoreGanacciQuest.ShoeStage == 1
+			if ShoeDebugShown == 0
+				; M5: retired diagnostic message; keep the saved flag and record stable.
+				set ShoeDebugShown to 1
+			endif
+			; Direct ACTI rendering avoids the failed special-idle visibility layer.
+			if ShoePlaying == 0 || SalvatoreGanacciShoeREF.GetDisabled == 1 || SalvatoreGanacciQuest.ShoeVisualActive == 0
+				PlayGroup Idle 1
+				SalvatoreGanacciShoeREF.MoveTo SalvatoreGanacciREF
+				SalvatoreGanacciShoeREF.Enable
+				set SalvatoreGanacciQuest.ShoeVisualActive to 1
+				set ShoePlaying to 1
+			endif
+			if SalvatoreGanacciShoeREF.GetDistance SalvatoreGanacciREF > 1024
+				SalvatoreGanacciShoeREF.MoveTo SalvatoreGanacciREF
+			endif
+			set ShoeX to GetPos x
+			set ShoeY to GetPos y
+			set ShoeZ to GetPos z
+			SalvatoreGanacciShoeREF.SetPos x ShoeX
+			SalvatoreGanacciShoeREF.SetPos y ShoeY
+			SalvatoreGanacciShoeREF.SetPos z ShoeZ
+			SetActorAlpha 0
+		elseif ShoePlaying == 1
+			SalvatoreGanacciShoeREF.Disable
+			SetActorAlpha 1
+			set SalvatoreGanacciQuest.ShoeVisualActive to 0
+			EvaluatePackage
+			set ShoePlaying to 0
+		endif
+	else
+		; Keep a pending cleanup across death/disable until this actor is alive again.
+		set ShoeRetry to 0
+	endif
+
 	; hide the big sprite two frames later (the drop needs his position for a frame)
 	if HideBody > 0
 		set HideBody to HideBody + 1
 		if HideBody >= 3
 			set HideBody to 0
-			Disable
+			if GetDead == 1
+				Disable
+			endif
 		endif
 	endif
 

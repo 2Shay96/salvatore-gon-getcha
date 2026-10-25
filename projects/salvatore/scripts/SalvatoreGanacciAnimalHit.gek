@@ -1,0 +1,17 @@
+scn SalvatoreGanacciAnimalHit
+
+; Native event filter attributes direct hits to the player, not companions.
+; The death block handles a lethal first hit; corpse hits cannot schedule a timer.
+Begin OnHit player
+	if GetDead == 0
+		if SalvatoreGanacciQuest.AnimalVersion == 1 && SalvatoreGanacciQuest.AnimalStage == 0
+			set SalvatoreGanacciQuest.AnimalHitPending to 1
+		endif
+	endif
+End
+
+Begin OnDeath player
+	if SalvatoreGanacciQuest.AnimalVersion == 1 && SalvatoreGanacciQuest.AnimalStage == 0
+		set SalvatoreGanacciQuest.AnimalHitPending to 1
+	endif
+End

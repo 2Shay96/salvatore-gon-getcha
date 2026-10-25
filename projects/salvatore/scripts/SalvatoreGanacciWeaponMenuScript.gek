@@ -1,0 +1,795 @@
+scn SalvatoreGanacciWeaponMenuScript
+ref FoundWeapon
+
+; Generated vanilla-only lookup; no weapon records are overridden.
+
+Begin MenuMode 1002
+	if player.GetItemCount SalvatoreGanacciWeapon > 0 && player.GetEquipped SalvatoreGanacciWeapon == 0 && SalvatoreGanacciQuest.RestoreWeaponPending == 0
+		set FoundWeapon to 0
+		if player.GetEquipped Fists == 1
+			set FoundWeapon to Fists
+		endif
+		if player.GetEquipped GasTrapDummy == 1
+			set FoundWeapon to GasTrapDummy
+		endif
+		if player.GetEquipped WeapBaseballBat == 1
+			set FoundWeapon to WeapBaseballBat
+		endif
+		if player.GetEquipped Weap10mmSubmachineGun == 1
+			set FoundWeapon to Weap10mmSubmachineGun
+		endif
+		if player.GetEquipped WeapAlienBlaster == 1
+			set FoundWeapon to WeapAlienBlaster
+		endif
+		if player.GetEquipped WeapBBGun == 1
+			set FoundWeapon to WeapBBGun
+		endif
+		if player.GetEquipped WeapBrassKnuckles == 1
+			set FoundWeapon to WeapBrassKnuckles
+		endif
+		if player.GetEquipped WeapKnifeCombat == 1
+			set FoundWeapon to WeapKnifeCombat
+		endif
+		if player.GetEquipped WeapTireIron == 1
+			set FoundWeapon to WeapTireIron
+		endif
+		if player.GetEquipped WeapDeathclawGauntlet == 1
+			set FoundWeapon to WeapDeathclawGauntlet
+		endif
+		if player.GetEquipped WeapFatman == 1
+			set FoundWeapon to WeapFatman
+		endif
+		if player.GetEquipped WeapFlamer == 1
+			set FoundWeapon to WeapFlamer
+		endif
+		if player.GetEquipped WeapGatlingLaser == 1
+			set FoundWeapon to WeapGatlingLaser
+		endif
+		if player.GetEquipped WeapGrenadeFrag == 1
+			set FoundWeapon to WeapGrenadeFrag
+		endif
+		if player.GetEquipped WeapGrenadePulse == 1
+			set FoundWeapon to WeapGrenadePulse
+		endif
+		if player.GetEquipped WeapGrenadePlasma == 1
+			set FoundWeapon to WeapGrenadePlasma
+		endif
+		if player.GetEquipped WeapHuntingRifle == 1
+			set FoundWeapon to WeapHuntingRifle
+		endif
+		if player.GetEquipped WeapKnife == 1
+			set FoundWeapon to WeapKnife
+		endif
+		if player.GetEquipped WeapLaserPistol == 1
+			set FoundWeapon to WeapLaserPistol
+		endif
+		if player.GetEquipped WeapLaserRifle == 1
+			set FoundWeapon to WeapLaserRifle
+		endif
+		if player.GetEquipped WeapLeadPipe == 1
+			set FoundWeapon to WeapLeadPipe
+		endif
+		if player.GetEquipped WeapMineBottlecap == 1
+			set FoundWeapon to WeapMineBottlecap
+		endif
+		if player.GetEquipped WeapMineFrag == 1
+			set FoundWeapon to WeapMineFrag
+		endif
+		if player.GetEquipped WeapMinePlasma == 1
+			set FoundWeapon to WeapMinePlasma
+		endif
+		if player.GetEquipped WeapMinePulse == 1
+			set FoundWeapon to WeapMinePulse
+		endif
+		if player.GetEquipped WeapMinigun == 1
+			set FoundWeapon to WeapMinigun
+		endif
+		if player.GetEquipped WeapMissileLauncher == 1
+			set FoundWeapon to WeapMissileLauncher
+		endif
+		if player.GetEquipped WeapPlasmaPistol == 1
+			set FoundWeapon to WeapPlasmaPistol
+		endif
+		if player.GetEquipped WeapPlasmaRifle == 1
+			set FoundWeapon to WeapPlasmaRifle
+		endif
+		if player.GetEquipped WeapPoliceBaton == 1
+			set FoundWeapon to WeapPoliceBaton
+		endif
+		if player.GetEquipped WeapPoolCue == 1
+			set FoundWeapon to WeapPoolCue
+		endif
+		if player.GetEquipped WeapPowerFist == 1
+			set FoundWeapon to WeapPowerFist
+		endif
+		if player.GetEquipped WeapRipper == 1
+			set FoundWeapon to WeapRipper
+		endif
+		if player.GetEquipped WeapShotgunSawedOff == 1
+			set FoundWeapon to WeapShotgunSawedOff
+		endif
+		if player.GetEquipped WeapShishkebab == 1
+			set FoundWeapon to WeapShishkebab
+		endif
+		if player.GetEquipped Weap10mmPistol == 1
+			set FoundWeapon to Weap10mmPistol
+		endif
+		if player.GetEquipped WeapSledgehammer == 1
+			set FoundWeapon to WeapSledgehammer
+		endif
+		if player.GetEquipped WeapSuperSledge == 1
+			set FoundWeapon to WeapSuperSledge
+		endif
+		if player.GetEquipped WeapSniperRifle == 1
+			set FoundWeapon to WeapSniperRifle
+		endif
+		if player.GetEquipped WeapSpikedKnuckles == 1
+			set FoundWeapon to WeapSpikedKnuckles
+		endif
+		if player.GetEquipped ProtectronHandLaser1HP == 1
+			set FoundWeapon to ProtectronHandLaser1HP
+		endif
+		if player.GetEquipped ProtectronHeadLaser2HL == 1
+			set FoundWeapon to ProtectronHeadLaser2HL
+		endif
+		if player.GetEquipped TurretGunCeiling02 == 1
+			set FoundWeapon to TurretGunCeiling02
+		endif
+		if player.GetEquipped TurretGunCeiling03 == 1
+			set FoundWeapon to TurretGunCeiling03
+		endif
+		if player.GetEquipped BehemothFireHydrant == 1
+			set FoundWeapon to BehemothFireHydrant
+		endif
+		if player.GetEquipped EyeBot1HP == 1
+			set FoundWeapon to EyeBot1HP
+		endif
+		if player.GetEquipped WeapSwitchBlade == 1
+			set FoundWeapon to WeapSwitchBlade
+		endif
+		if player.GetEquipped TrapBaseball == 1
+			set FoundWeapon to TrapBaseball
+		endif
+		if player.GetEquipped SentryBotGatling2HH == 1
+			set FoundWeapon to SentryBotGatling2HH
+		endif
+		if player.GetEquipped MisterGutsyPlasma1HP == 1
+			set FoundWeapon to MisterGutsyPlasma1HP
+		endif
+		if player.GetEquipped MisterGutsyFlamer2HL == 1
+			set FoundWeapon to MisterGutsyFlamer2HL
+		endif
+		if player.GetEquipped MisterHandyBuzzsaw == 1
+			set FoundWeapon to MisterHandyBuzzsaw
+		endif
+		if player.GetEquipped VertibirdBombGun == 1
+			set FoundWeapon to VertibirdBombGun
+		endif
+		if player.GetEquipped Bloatfly1HP == 1
+			set FoundWeapon to Bloatfly1HP
+		endif
+		if player.GetEquipped RobobrainLaser1HPRight == 1
+			set FoundWeapon to RobobrainLaser1HPRight
+		endif
+		if player.GetEquipped MysteriousStranger44Magnum == 1
+			set FoundWeapon to MysteriousStranger44Magnum
+		endif
+		if player.GetEquipped SentryBotMinigun2HR == 1
+			set FoundWeapon to SentryBotMinigun2HR
+		endif
+		if player.GetEquipped SentryBotMissileLauncher2HL == 1
+			set FoundWeapon to SentryBotMissileLauncher2HL
+		endif
+		if player.GetEquipped CentaurSpitMissile == 1
+			set FoundWeapon to CentaurSpitMissile
+		endif
+		if player.GetEquipped SatcomNuclearStrike == 1
+			set FoundWeapon to SatcomNuclearStrike
+		endif
+		if player.GetEquipped QueenAnt2HL == 1
+			set FoundWeapon to QueenAnt2HL
+		endif
+		if player.GetEquipped MS04FireAntWorkerFlame2HL == 1
+			set FoundWeapon to MS04FireAntWorkerFlame2HL
+		endif
+		if player.GetEquipped Turret01Laser2HR == 1
+			set FoundWeapon to Turret01Laser2HR
+		endif
+		if player.GetEquipped Turret02Laser2HR == 1
+			set FoundWeapon to Turret02Laser2HR
+		endif
+		if player.GetEquipped Turret03Laser2HR == 1
+			set FoundWeapon to Turret03Laser2HR
+		endif
+		if player.GetEquipped WeapNVVarmintRifle == 1
+			set FoundWeapon to WeapNVVarmintRifle
+		endif
+		if player.GetEquipped WeapNVGrenadeLauncher == 1
+			set FoundWeapon to WeapNVGrenadeLauncher
+		endif
+		if player.GetEquipped VertibirdGun == 1
+			set FoundWeapon to VertibirdGun
+		endif
+		if player.GetEquipped WeapNVRiotShotgun == 1
+			set FoundWeapon to WeapNVRiotShotgun
+		endif
+		if player.GetEquipped WeapNVHuntingShotgun == 1
+			set FoundWeapon to WeapNVHuntingShotgun
+		endif
+		if player.GetEquipped WeapNVLeverActionShotgun == 1
+			set FoundWeapon to WeapNVLeverActionShotgun
+		endif
+		if player.GetEquipped WeapNV127mmPistol == 1
+			set FoundWeapon to WeapNV127mmPistol
+		endif
+		if player.GetEquipped WeapNVHuntingRevolver == 1
+			set FoundWeapon to WeapNVHuntingRevolver
+		endif
+		if player.GetEquipped WeapNV44Revolver == 1
+			set FoundWeapon to WeapNV44Revolver
+		endif
+		if player.GetEquipped WeapNV357Revolver == 1
+			set FoundWeapon to WeapNV357Revolver
+		endif
+		if player.GetEquipped WeapNV9mmSubmachineGun == 1
+			set FoundWeapon to WeapNV9mmSubmachineGun
+		endif
+		if player.GetEquipped WeapNVSilenced22SMG == 1
+			set FoundWeapon to WeapNVSilenced22SMG
+		endif
+		if player.GetEquipped WeapNVCowboyRepeater == 1
+			set FoundWeapon to WeapNVCowboyRepeater
+		endif
+		if player.GetEquipped WeapNVAntiMaterielRifle == 1
+			set FoundWeapon to WeapNVAntiMaterielRifle
+		endif
+		if player.GetEquipped WeapNVAssaultCarbine == 1
+			set FoundWeapon to WeapNVAssaultCarbine
+		endif
+		if player.GetEquipped WeapNVPlasmaCaster == 1
+			set FoundWeapon to WeapNVPlasmaCaster
+		endif
+		if player.GetEquipped WeapNVIncinerator == 1
+			set FoundWeapon to WeapNVIncinerator
+		endif
+		if player.GetEquipped WeapNVLightMachineGun == 1
+			set FoundWeapon to WeapNVLightMachineGun
+		endif
+		if player.GetEquipped WeapNVRechargerPistol == 1
+			set FoundWeapon to WeapNVRechargerPistol
+		endif
+		if player.GetEquipped WeapNVPlasmaDefender == 1
+			set FoundWeapon to WeapNVPlasmaDefender
+		endif
+		if player.GetEquipped WeapNVLaserRCW == 1
+			set FoundWeapon to WeapNVLaserRCW
+		endif
+		if player.GetEquipped WeapNVGrenadeMachinegun == 1
+			set FoundWeapon to WeapNVGrenadeMachinegun
+		endif
+		if player.GetEquipped WeapNVPulseGun == 1
+			set FoundWeapon to WeapNVPulseGun
+		endif
+		if player.GetEquipped MS04FireAntSoldierFlame2HL == 1
+			set FoundWeapon to MS04FireAntSoldierFlame2HL
+		endif
+		if player.GetEquipped WeapNailBoard == 1
+			set FoundWeapon to WeapNailBoard
+		endif
+		if player.GetEquipped MisterHandyFlamer2HL == 1
+			set FoundWeapon to MisterHandyFlamer2HL
+		endif
+		if player.GetEquipped TurretGunCeiling01 == 1
+			set FoundWeapon to TurretGunCeiling01
+		endif
+		if player.GetEquipped WeapRollingPin == 1
+			set FoundWeapon to WeapRollingPin
+		endif
+		if player.GetEquipped MS04QueenAnt2HL == 1
+			set FoundWeapon to MS04QueenAnt2HL
+		endif
+		if player.GetEquipped WeapNVDynamite == 1
+			set FoundWeapon to WeapNVDynamite
+		endif
+		if player.GetEquipped RobobrainMesmetron == 1
+			set FoundWeapon to RobobrainMesmetron
+		endif
+		if player.GetEquipped CG02WeapBBGun == 1
+			set FoundWeapon to CG02WeapBBGun
+		endif
+		if player.GetEquipped MS04FireAntGuardFlame2HL == 1
+			set FoundWeapon to MS04FireAntGuardFlame2HL
+		endif
+		if player.GetEquipped WeapNVBumperSword == 1
+			set FoundWeapon to WeapNVBumperSword
+		endif
+		if player.GetEquipped WeapNVRebarClub == 1
+			set FoundWeapon to WeapNVRebarClub
+		endif
+		if player.GetEquipped WeapNVTrailCarbine == 1
+			set FoundWeapon to WeapNVTrailCarbine
+		endif
+		if player.GetEquipped WeapNVCaravanShotgun == 1
+			set FoundWeapon to WeapNVCaravanShotgun
+		endif
+		if player.GetEquipped HVWeapPlasmaRifleWeak == 1
+			set FoundWeapon to HVWeapPlasmaRifleWeak
+		endif
+		if player.GetEquipped WeapBooneSniperRifle == 1
+			set FoundWeapon to WeapBooneSniperRifle
+		endif
+		if player.GetEquipped WeapNVMachete == 1
+			set FoundWeapon to WeapNVMachete
+		endif
+		if player.GetEquipped HVBrokenWeapSuperSledge == 1
+			set FoundWeapon to HVBrokenWeapSuperSledge
+		endif
+		if player.GetEquipped HVBrokenWeapLaserRifle == 1
+			set FoundWeapon to HVBrokenWeapLaserRifle
+		endif
+		if player.GetEquipped HVBrokenWeapMinigun == 1
+			set FoundWeapon to HVBrokenWeapMinigun
+		endif
+		if player.GetEquipped NVSteelTurret03Laser2HR == 1
+			set FoundWeapon to NVSteelTurret03Laser2HR
+		endif
+		if player.GetEquipped ARCHIMEDESI == 1
+			set FoundWeapon to ARCHIMEDESI
+		endif
+		if player.GetEquipped WeapTeslaCannon == 1
+			set FoundWeapon to WeapTeslaCannon
+		endif
+		if player.GetEquipped WeapTeslaChainEffect == 1
+			set FoundWeapon to WeapTeslaChainEffect
+		endif
+		if player.GetEquipped WeapTeslaChainEffect02 == 1
+			set FoundWeapon to WeapTeslaChainEffect02
+		endif
+		if player.GetEquipped WeapTeslaChainEffect03 == 1
+			set FoundWeapon to WeapTeslaChainEffect03
+		endif
+		if player.GetEquipped WeapTeslaChainEffect04 == 1
+			set FoundWeapon to WeapTeslaChainEffect04
+		endif
+		if player.GetEquipped WeapNVTriBeamLaserRifle == 1
+			set FoundWeapon to WeapNVTriBeamLaserRifle
+		endif
+		if player.GetEquipped WeapHeavyIncinerator == 1
+			set FoundWeapon to WeapHeavyIncinerator
+		endif
+		if player.GetEquipped WeapNV357RevolverUnique == 1
+			set FoundWeapon to WeapNV357RevolverUnique
+		endif
+		if player.GetEquipped WeapNV9mmSubmachineGunUnique == 1
+			set FoundWeapon to WeapNV9mmSubmachineGunUnique
+		endif
+		if player.GetEquipped WeapNV9mmPistol == 1
+			set FoundWeapon to WeapNV9mmPistol
+		endif
+		if player.GetEquipped WeapNVSilenced22Pistol == 1
+			set FoundWeapon to WeapNVSilenced22Pistol
+		endif
+		if player.GetEquipped WeapNVSingleShotgun == 1
+			set FoundWeapon to WeapNVSingleShotgun
+		endif
+		if player.GetEquipped WeapNVBoxingGloves == 1
+			set FoundWeapon to WeapNVBoxingGloves
+		endif
+		if player.GetEquipped WeapNVBoxingGoldenGloves == 1
+			set FoundWeapon to WeapNVBoxingGoldenGloves
+		endif
+		if player.GetEquipped WeapNVVarmintRifleUnique == 1
+			set FoundWeapon to WeapNVVarmintRifleUnique
+		endif
+		if player.GetEquipped WeapNVPlasmaRifleUnique == 1
+			set FoundWeapon to WeapNVPlasmaRifleUnique
+		endif
+		if player.GetEquipped WeapNVBinoculars == 1
+			set FoundWeapon to WeapNVBinoculars
+		endif
+		if player.GetEquipped WeapNV9mmPistolUnique == 1
+			set FoundWeapon to WeapNV9mmPistolUnique
+		endif
+		if player.GetEquipped WeapNVServiceRifle == 1
+			set FoundWeapon to WeapNVServiceRifle
+		endif
+		if player.GetEquipped BMWeapNailBoard == 1
+			set FoundWeapon to BMWeapNailBoard
+		endif
+		if player.GetEquipped WeapNVBattleRifleUnique == 1
+			set FoundWeapon to WeapNVBattleRifleUnique
+		endif
+		if player.GetEquipped WeapNVHuntingShotgunUnique == 1
+			set FoundWeapon to WeapNVHuntingShotgunUnique
+		endif
+		if player.GetEquipped WeapNVStraightRazor == 1
+			set FoundWeapon to WeapNVStraightRazor
+		endif
+		if player.GetEquipped dlc04shovel == 1
+			set FoundWeapon to dlc04shovel
+		endif
+		if player.GetEquipped DLC05ShockBaton == 1
+			set FoundWeapon to DLC05ShockBaton
+		endif
+		if player.GetEquipped DLC05ShockBatonFX == 1
+			set FoundWeapon to DLC05ShockBatonFX
+		endif
+		if player.GetEquipped DLC05AlienPistol == 1
+			set FoundWeapon to DLC05AlienPistol
+		endif
+		if player.GetEquipped DLC05AlienPowerCell == 1
+			set FoundWeapon to DLC05AlienPowerCell
+		endif
+		if player.GetEquipped DLC05AlienBlasterClean == 1
+			set FoundWeapon to DLC05AlienBlasterClean
+		endif
+		if player.GetEquipped DLC05AlienRifle == 1
+			set FoundWeapon to DLC05AlienRifle
+		endif
+		if player.GetEquipped SporePlantSpitMissile == 1
+			set FoundWeapon to SporePlantSpitMissile
+		endif
+		if player.GetEquipped WeapNVCowboyRepeaterUnique == 1
+			set FoundWeapon to WeapNVCowboyRepeaterUnique
+		endif
+		if player.GetEquipped WeapNVDriverUnique == 1
+			set FoundWeapon to WeapNVDriverUnique
+		endif
+		if player.GetEquipped WeapPlasmaRifleAlwaysCrit == 1
+			set FoundWeapon to WeapPlasmaRifleAlwaysCrit
+		endif
+		if player.GetEquipped WeapLaserRifleAlwaysCrits == 1
+			set FoundWeapon to WeapLaserRifleAlwaysCrits
+		endif
+		if player.GetEquipped WeapNV9iron == 1
+			set FoundWeapon to WeapNV9iron
+		endif
+		if player.GetEquipped WeapNVGrenadeRifle == 1
+			set FoundWeapon to WeapNVGrenadeRifle
+		endif
+		if player.GetEquipped NellisArtillery == 1
+			set FoundWeapon to NellisArtillery
+		endif
+		if player.GetEquipped WeapNVDynamiteNoDrop == 1
+			set FoundWeapon to WeapNVDynamiteNoDrop
+		endif
+		if player.GetEquipped WeapNVLaserPistolUnique == 1
+			set FoundWeapon to WeapNVLaserPistolUnique
+		endif
+		if player.GetEquipped WeapMissileLauncherBroken == 1
+			set FoundWeapon to WeapMissileLauncherBroken
+		endif
+		if player.GetEquipped WeapNVGrenadeRifleBroken == 1
+			set FoundWeapon to WeapNVGrenadeRifleBroken
+		endif
+		if player.GetEquipped WeapNVLilySword == 1
+			set FoundWeapon to WeapNVLilySword
+		endif
+		if player.GetEquipped WeapNVLilyGauntlet == 1
+			set FoundWeapon to WeapNVLilyGauntlet
+		endif
+		if player.GetEquipped WeapNVMarksmanCarbine == 1
+			set FoundWeapon to WeapNVMarksmanCarbine
+		endif
+		if player.GetEquipped WeapNVMarksmanCarbineUnique == 1
+			set FoundWeapon to WeapNVMarksmanCarbineUnique
+		endif
+		if player.GetEquipped NVRorschach01 == 1
+			set FoundWeapon to NVRorschach01
+		endif
+		if player.GetEquipped WeapNVCleaver == 1
+			set FoundWeapon to WeapNVCleaver
+		endif
+		if player.GetEquipped WeapNVMinePowderCharge == 1
+			set FoundWeapon to WeapNVMinePowderCharge
+		endif
+		if player.GetEquipped WeapNVLongFuseDynamite == 1
+			set FoundWeapon to WeapNVLongFuseDynamite
+		endif
+		if player.GetEquipped WeapMineNellisMunition == 1
+			set FoundWeapon to WeapMineNellisMunition
+		endif
+		if player.GetEquipped HVMissingLaserPistol == 1
+			set FoundWeapon to HVMissingLaserPistol
+		endif
+		if player.GetEquipped WeapNVSecuritronSubmachineGun == 1
+			set FoundWeapon to WeapNVSecuritronSubmachineGun
+		endif
+		if player.GetEquipped WeapNVSecuritronLauncher == 1
+			set FoundWeapon to WeapNVSecuritronLauncher
+		endif
+		if player.GetEquipped WeapNVSecuritronLaser == 1
+			set FoundWeapon to WeapNVSecuritronLaser
+		endif
+		if player.GetEquipped WeapNVSecuritronPowerFist == 1
+			set FoundWeapon to WeapNVSecuritronPowerFist
+		endif
+		if player.GetEquipped WeapNVSecuritronMissile == 1
+			set FoundWeapon to WeapNVSecuritronMissile
+		endif
+		if player.GetEquipped WeapNVFireGeckoFlame == 1
+			set FoundWeapon to WeapNVFireGeckoFlame
+		endif
+		if player.GetEquipped NVGojiraFlame2HL == 1
+			set FoundWeapon to NVGojiraFlame2HL
+		endif
+		if player.GetEquipped RexBite == 1
+			set FoundWeapon to RexBite
+		endif
+		if player.GetEquipped NVWeapMS22Camera == 1
+			set FoundWeapon to NVWeapMS22Camera
+		endif
+		if player.GetEquipped WeapNVDressCane == 1
+			set FoundWeapon to WeapNVDressCane
+		endif
+		if player.GetEquipped WeapNVFireaxe == 1
+			set FoundWeapon to WeapNVFireaxe
+		endif
+		if player.GetEquipped WeapNVHatchet == 1
+			set FoundWeapon to WeapNVHatchet
+		endif
+		if player.GetEquipped WeapShovel == 1
+			set FoundWeapon to WeapShovel
+		endif
+		if player.GetEquipped WeapNVBrushGun == 1
+			set FoundWeapon to WeapNVBrushGun
+		endif
+		if player.GetEquipped WeapNVRechargerRifle == 1
+			set FoundWeapon to WeapNVRechargerRifle
+		endif
+		if player.GetEquipped WeapNVMultiPlasRifle == 1
+			set FoundWeapon to WeapNVMultiPlasRifle
+		endif
+		if player.GetEquipped WeapNVC4PlasticExplosive == 1
+			set FoundWeapon to WeapNVC4PlasticExplosive
+		endif
+		if player.GetEquipped VFSWeapPlasmaRifleVanGraff == 1
+			set FoundWeapon to VFSWeapPlasmaRifleVanGraff
+		endif
+		if player.GetEquipped VFSWeapLaserRifleVanGraff == 1
+			set FoundWeapon to VFSWeapLaserRifleVanGraff
+		endif
+		if player.GetEquipped WeapGrenadeGas == 1
+			set FoundWeapon to WeapGrenadeGas
+		endif
+		if player.GetEquipped WeapNV44RevolverUnique == 1
+			set FoundWeapon to WeapNV44RevolverUnique
+		endif
+		if player.GetEquipped WeapNVMacheteDeadSea == 1
+			set FoundWeapon to WeapNVMacheteDeadSea
+		endif
+		if player.GetEquipped WeapNVRangerSequoia == 1
+			set FoundWeapon to WeapNVRangerSequoia
+		endif
+		if player.GetEquipped WeapNVDogTagFistUnique == 1
+			set FoundWeapon to WeapNVDogTagFistUnique
+		endif
+		if player.GetEquipped WeapNVBoxingTape == 1
+			set FoundWeapon to WeapNVBoxingTape
+		endif
+		if player.GetEquipped WeapNVDetonator == 1
+			set FoundWeapon to WeapNVDetonator
+		endif
+		if player.GetEquipped WeapNVThatGun == 1
+			set FoundWeapon to WeapNVThatGun
+		endif
+		if player.GetEquipped WeapCattleProd == 1
+			set FoundWeapon to WeapCattleProd
+		endif
+		if player.GetEquipped WeapNVMissFortuneGun == 1
+			set FoundWeapon to WeapNVMissFortuneGun
+		endif
+		if player.GetEquipped NVCamera == 1
+			set FoundWeapon to NVCamera
+		endif
+		if player.GetEquipped WeapNVTimeBomb == 1
+			set FoundWeapon to WeapNVTimeBomb
+		endif
+		if player.GetEquipped WeapNVLegateSword == 1
+			set FoundWeapon to WeapNVLegateSword
+		endif
+		if player.GetEquipped WeapSuperSledgeMeanie == 1
+			set FoundWeapon to WeapSuperSledgeMeanie
+		endif
+		if player.GetEquipped WeapKnifeAssassin == 1
+			set FoundWeapon to WeapKnifeAssassin
+		endif
+		if player.GetEquipped WeapNV127mmSubmachineGun == 1
+			set FoundWeapon to WeapNV127mmSubmachineGun
+		endif
+		if player.GetEquipped WeapNVSniperRifleUnique == 1
+			set FoundWeapon to WeapNVSniperRifleUnique
+		endif
+		if player.GetEquipped WeapNVGrenadeRifleUnique == 1
+			set FoundWeapon to WeapNVGrenadeRifleUnique
+		endif
+		if player.GetEquipped WeapNVLegateSword2 == 1
+			set FoundWeapon to WeapNVLegateSword2
+		endif
+		if player.GetEquipped WeapNVDebugMegaPistol == 1
+			set FoundWeapon to WeapNVDebugMegaPistol
+		endif
+		if player.GetEquipped WeapNVDogTagFist == 1
+			set FoundWeapon to WeapNVDogTagFist
+		endif
+		if player.GetEquipped WeapLaserRifleUnique == 1
+			set FoundWeapon to WeapLaserRifleUnique
+		endif
+		if player.GetEquipped WeapNVDetonatorLoyal == 1
+			set FoundWeapon to WeapNVDetonatorLoyal
+		endif
+		if player.GetEquipped WeapNVStraightRazorUnique == 1
+			set FoundWeapon to WeapNVStraightRazorUnique
+		endif
+		if player.GetEquipped WeapNVCleaverUnique == 1
+			set FoundWeapon to WeapNVCleaverUnique
+		endif
+		if player.GetEquipped WeapNVThrowingSpear == 1
+			set FoundWeapon to WeapNVThrowingSpear
+		endif
+		if player.GetEquipped WeapNVGrenadeIncendiary == 1
+			set FoundWeapon to WeapNVGrenadeIncendiary
+		endif
+		if player.GetEquipped WeapNVGrenadeStun == 1
+			set FoundWeapon to WeapNVGrenadeStun
+		endif
+		if player.GetEquipped WeapNVThrowingHatchet == 1
+			set FoundWeapon to WeapNVThrowingHatchet
+		endif
+		if player.GetEquipped WeapNVGrenadeFragHoly == 1
+			set FoundWeapon to WeapNVGrenadeFragHoly
+		endif
+		if player.GetEquipped WeapNVEuclidsCFinder == 1
+			set FoundWeapon to WeapNVEuclidsCFinder
+		endif
+		if player.GetEquipped CentaurEvolvedSpitMissile == 1
+			set FoundWeapon to CentaurEvolvedSpitMissile
+		endif
+		if player.GetEquipped LakelurkSonic2HL == 1
+			set FoundWeapon to LakelurkSonic2HL
+		endif
+		if player.GetEquipped WeapNVFireGeckoYoungFlame == 1
+			set FoundWeapon to WeapNVFireGeckoYoungFlame
+		endif
+		if player.GetEquipped WeapBladedGauntlet == 1
+			set FoundWeapon to WeapBladedGauntlet
+		endif
+		if player.GetEquipped WeapBladedGauntletUnique == 1
+			set FoundWeapon to WeapBladedGauntletUnique
+		endif
+		if player.GetEquipped WeapNVMantisGauntlet == 1
+			set FoundWeapon to WeapNVMantisGauntlet
+		endif
+		if player.GetEquipped WeapNVMacheteGladius == 1
+			set FoundWeapon to WeapNVMacheteGladius
+		endif
+		if player.GetEquipped WeapNVDisplacerGlove == 1
+			set FoundWeapon to WeapNVDisplacerGlove
+		endif
+		if player.GetEquipped WeapNVDisplacerGloveUnique == 1
+			set FoundWeapon to WeapNVDisplacerGloveUnique
+		endif
+		if player.GetEquipped WeapNVSpikedKnucklesUnique == 1
+			set FoundWeapon to WeapNVSpikedKnucklesUnique
+		endif
+		if player.GetEquipped WeapSuperSledgeUnique == 1
+			set FoundWeapon to WeapSuperSledgeUnique
+		endif
+		if player.GetEquipped WeapNVFireaxeUnique == 1
+			set FoundWeapon to WeapNVFireaxeUnique
+		endif
+		if player.GetEquipped WeapNVLeadPipeUnique == 1
+			set FoundWeapon to WeapNVLeadPipeUnique
+		endif
+		if player.GetEquipped WeapNVGaussRifle == 1
+			set FoundWeapon to WeapNVGaussRifle
+		endif
+		if player.GetEquipped WeapNVTeslaCannonUnique == 1
+			set FoundWeapon to WeapNVTeslaCannonUnique
+		endif
+		if player.GetEquipped WeapNVGaussRifleUnique == 1
+			set FoundWeapon to WeapNVGaussRifleUnique
+		endif
+		if player.GetEquipped WeapNVBallisticFist == 1
+			set FoundWeapon to WeapNVBallisticFist
+		endif
+		if player.GetEquipped WeapNVZapGloveUnique == 1
+			set FoundWeapon to WeapNVZapGloveUnique
+		endif
+		if player.GetEquipped WeapNVZapGlove == 1
+			set FoundWeapon to WeapNVZapGlove
+		endif
+		if player.GetEquipped WeapThermicLance == 1
+			set FoundWeapon to WeapThermicLance
+		endif
+		if player.GetEquipped MS04FireAntQueenFlame2HL == 1
+			set FoundWeapon to MS04FireAntQueenFlame2HL
+		endif
+		if player.GetEquipped WeapNVChainsaw == 1
+			set FoundWeapon to WeapNVChainsaw
+		endif
+		if player.GetEquipped WeapNVBBGunUnique == 1
+			set FoundWeapon to WeapNVBBGunUnique
+		endif
+		if player.GetEquipped WeapNVGrenadeMachinegunUnique == 1
+			set FoundWeapon to WeapNVGrenadeMachinegunUnique
+		endif
+		if player.GetEquipped WeapNVThrowingKnife == 1
+			set FoundWeapon to WeapNVThrowingKnife
+		endif
+		if player.GetEquipped WeapNVMissileLauncherUnique == 1
+			set FoundWeapon to WeapNVMissileLauncherUnique
+		endif
+		if player.GetEquipped WeapNVMinigunUnique == 1
+			set FoundWeapon to WeapNVMinigunUnique
+		endif
+		if player.GetEquipped WeapNVKnifeCombatUnique == 1
+			set FoundWeapon to WeapNVKnifeCombatUnique
+		endif
+		if player.GetEquipped HVTurret03Laser == 1
+			set FoundWeapon to HVTurret03Laser
+		endif
+		if player.GetEquipped EDEZapGun == 1
+			set FoundWeapon to EDEZapGun
+		endif
+		if player.GetEquipped EDEStunBaton == 1
+			set FoundWeapon to EDEStunBaton
+		endif
+		if player.GetEquipped WeapShotgunSawedOffUnique == 1
+			set FoundWeapon to WeapShotgunSawedOffUnique
+		endif
+		if player.GetEquipped WeapNVMacheteGladiator == 1
+			set FoundWeapon to WeapNVMacheteGladiator
+		endif
+		if player.GetEquipped EDEStunBatonUpgrade == 1
+			set FoundWeapon to EDEStunBatonUpgrade
+		endif
+		if player.GetEquipped EDEZapGunUpgrade == 1
+			set FoundWeapon to EDEZapGunUpgrade
+		endif
+		if player.GetEquipped WeapNVSlaveBackPack == 1
+			set FoundWeapon to WeapNVSlaveBackPack
+		endif
+		if player.GetEquipped VHDOliverSniperAntiMaterielRifle == 1
+			set FoundWeapon to VHDOliverSniperAntiMaterielRifle
+		endif
+		if player.GetEquipped WeapNVAssaultCarbineLily == 1
+			set FoundWeapon to WeapNVAssaultCarbineLily
+		endif
+		if player.GetEquipped WeapNVPlasmaDefenderArcade == 1
+			set FoundWeapon to WeapNVPlasmaDefenderArcade
+		endif
+		if player.GetEquipped WeapGrenadeFragMisfits == 1
+			set FoundWeapon to WeapGrenadeFragMisfits
+		endif
+		if player.GetEquipped WeapNVCaravanShotgunCass == 1
+			set FoundWeapon to WeapNVCaravanShotgunCass
+		endif
+		if player.GetEquipped WeapKnifeCombatCass == 1
+			set FoundWeapon to WeapKnifeCombatCass
+		endif
+		if player.GetEquipped WeapNV44RevolverRaul == 1
+			set FoundWeapon to WeapNV44RevolverRaul
+		endif
+		if player.GetEquipped WeapLeadPipeRaul == 1
+			set FoundWeapon to WeapLeadPipeRaul
+		endif
+		if player.GetEquipped WeapNVMacheteBoone == 1
+			set FoundWeapon to WeapNVMacheteBoone
+		endif
+		if player.GetEquipped WeapPowerFistVeronica == 1
+			set FoundWeapon to WeapPowerFistVeronica
+		endif
+		if player.GetEquipped Weap10mmPistolVeronica == 1
+			set FoundWeapon to Weap10mmPistolVeronica
+		endif
+		if player.GetEquipped WeapRipperArcade == 1
+			set FoundWeapon to WeapRipperArcade
+		endif
+		if player.GetEquipped WeapShotgunSawedOffNPC == 1
+			set FoundWeapon to WeapShotgunSawedOffNPC
+		endif
+		; Unarmed or an unknown mod-added weapon clears the prior selection.
+		set SalvatoreGanacciQuest.LastPlayerWeapon to FoundWeapon
+	endif
+End

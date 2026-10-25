@@ -1,8 +1,8 @@
 scn SalvatoreGanacciWeaponScript
 
-; Dropping Salvatore deploys him too: he hops back into the inventory (keeping his condition)
-; and the quest equips him, which deploys the companion.
-Begin OnDrop player
-	set SalvatoreGanacciQuest.DropPending to 1
-	Activate player
+; Normal Weapons-tab click is handled before equip by SalvatoreGanacci.dll.
+; Keep this script FormID. Drop is an ordinary inventory action, not deployment.
+Begin OnEquip player
+	; Only reached by hotkeys/console/unsupported missing-DLL paths.
+	; No gun restoration or item consumption is attempted here.
 End
