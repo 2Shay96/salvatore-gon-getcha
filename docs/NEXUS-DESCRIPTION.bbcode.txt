@@ -1,55 +1,84 @@
 [center][size=6][color=#E6B85C][b]SALVATORE GON’ GETCHA[/b][/color][/size]
 [size=4][color=#EAD8B0]He finds you. He fights you. Then he's your besty.[/color][/size][/center]
 
-[color=#EAD8B0]Bring a dancing Salvatore Ganacci billboard sprite into Fallout: New Vegas. He starts as a hostile encounter in the Mojave; defeat him, collect him, and deploy him as a companion who follows, fights and explores nearby while you stand still.
+[color=#EAD8B0]Ever wanted a dancing Salvatore Ganacci sprite hunting you across the Mojave? No? Too late.
 
-This sprite mod was made with [url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio[/url], with the gameplay plugin authored in GECK. Sprite Forge Studio is a creation tool; you do not need it installed to play this mod.[/color]
+He starts out as a boss fight. Beat him, pick him up, and from then on he's your dancing companion: he follows you, fights for you, and wanders around nearby whenever you stop moving.
+
+I made him with [url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio[/url], my own tool for turning videos into game sprites. It's coming to Nexus soon (more on that below). The gameplay side was built in the GECK. You don't need Sprite Forge to play, just this mod.
+
+v1.2 is the polish update, and honestly he feels polished af now: VATS finally works on him, and his music pauses when you open a menu, then picks up right where it left off.[/color]
 
 [size=4][color=#E6B85C][b]FROM BOSS TO POCKET COMPANION[/b][/color][/size]
 [list]
-[*][color=#EAD8B0]Harming a supported peaceful animal starts a 1-3 in-game day countdown, warning and eagle screech. He arrives outdoors in the main Mojave; repeat hits do not restart the timer.[/color][/*]
-[*][color=#EAD8B0]VATS works against him: target his Torso with guns or fists for a normal hit chance.[/color][/*]
-[*][color=#EAD8B0]Separate main, idle and attack sprites; main, idle and shoe use forward/backward loops at 24 fps. The shoe approach switches to regular sprites at about 10 metres.[/color][/*]
-[*][color=#EAD8B0]A constant spatial theme while he is active, which pauses in menus and the Pip-Boy and carries on where it left off, an occasional attack quip, and two randomly selected idle clips.[/color][/*]
-[*][color=#EAD8B0]Defeat and collect him, then left-click Salvatore in Weapons and close Pip-Boy to deploy. Your selected weapon, exact inventory copy, condition and attachments are left alone.[/color][/*]
-[*][color=#EAD8B0]He follows, fights enemies and roams nearby when you stop moving.[/color][/*]
-[*][color=#EAD8B0]Companion defeats reduce his condition to approximately 66%, 33%, then 0%. Repair him before deploying again.[/color][/*]
-[*][color=#EAD8B0]The optional console-obtainable Ganacci Remote retains status and recovery controls. New saves no longer receive it automatically.[/color][/*]
+[*][color=#EAD8B0]Hurt a peaceful brahmin or bighorner and the clock starts. Within 1-3 in-game days you'll get a warning and an eagle screech... then he shows up, somewhere outdoors in the Mojave. Hitting more animals won't reset the timer.[/color][/*]
+[*][color=#EAD8B0]VATS works on him now. Aim for his torso with guns or fists for a normal hit chance.[/color][/*]
+[*][color=#EAD8B0]He's fully animated: his own main, idle and attack sprites, looping back and forth at 24 fps. On his way to you he does the shoe approach, then switches to his regular sprites at about 10 metres.[/color][/*]
+[*][color=#EAD8B0]He brings his own soundtrack. His theme plays around him while he's out, pauses whenever you're in a menu or the Pip-Boy, and carries on where it left off. Plus the odd attack quip and a couple of random idle clips.[/color][/*]
+[*][color=#EAD8B0]Once you've beaten him and picked him up, left-click him in your Weapons and close the Pip-Boy to deploy him. It doesn't touch your current weapon, and he keeps his condition and attachments.[/color][/*]
+[*][color=#EAD8B0]He follows you, fights whatever's fighting you, and roams around when you stand still.[/color][/*]
+[*][color=#EAD8B0]He can go down too. Each time he's beaten as your companion, his condition drops: about 66%, then 33%, then 0%. Repair him before you send him out again.[/color][/*]
+[*][color=#EAD8B0]There's an optional Ganacci Remote (console only) with status and recovery controls. New saves don't get it automatically anymore.[/color][/*]
 [/list]
 
-
-[size=4][color=#E6B85C][b]INSTALLATION & REQUIREMENTS[/b][/color][/size]
-[color=#EAD8B0]v1.2 requires Fallout: New Vegas Steam 1.4.0.525, FalloutNV.esm and xNVSE 6.4.9 or newer 6.x. The required SalvatoreGanacci.dll is bundled. No DLC, ShowOff, JIP or GECK MCP is needed. Launch through your working xNVSE/4GB setup.
-
-Close FNV, back up your saves, and install SalvatoreGanacci-v1.2.zip in place of older Salvatore packages. Enable SalvatoreGanacci.esp and restart through xNVSE. For manual installation, copy the plugin and meshes, textures and sound folders into Fallout New Vegas/Data, preserving their folder structure.
-
-Use a save made before installing the mod for a fresh start. New saves do not receive the optional Remote; existing Remote copies remain. The first qualifying attack on a standard Brahmin or selected peaceful Goodsprings/Jacobstown Bighorner starts the encounter countdown. The natural encounter begins outdoors in the main Mojave worldspace; if you are indoors or on the Strip, head back into the Mojave.
-
-After collecting Salvatore, left-click his Weapons entry, acknowledge the popup and close Pip-Boy to deploy. Activate him to store. Actual repaired condition is preserved. Duplicate items or condition below 1% refuse deployment without consumption; repair him normally before trying again. Drop is an ordinary inventory action.[/color]
-
-[color=#EAD8B0]Showcase note: deathclaw footage uses an optional filming add-on with invulnerability and increased punch damage. That add-on is not included in the main download. The green scanline cover is promotional artwork; gameplay screenshots show the actual sprite appearance.[/color]
-
-[size=4][color=#E6B85C][b]KNOWN ISSUES - v1.2[/b][/color][/size]
+[size=4][color=#E6B85C][b]INSTALL & REQUIREMENTS[/b][/color][/size]
+[color=#EAD8B0][b]You'll need:[/b][/color]
 [list]
-[*][color=#EAD8B0]VATS offers only Torso, with inherited robot limbs/sensors/combat inhibitor removed. Fists get 0% where there is no navmesh path to him, as for any target. If he stays off-screen in VATS for over 2 seconds, that VATS session gives 0%; re-enter VATS with him in view.[/color][/*]
-[*][color=#EAD8B0]Repair works through the normal item repair flow. Repair-bag compatibility has not been tested.[/color][/*]
-[*][color=#EAD8B0]His defeated-sprite loop still plays in menus. Scripted pickup can be silent, and a brief sprite flicker may occur on first appearance.[/color][/*]
-[*][color=#EAD8B0]Back up saves before updating. Existing progression and test-mode settings are retained; old duplicate items are not automatically deleted. Broader old-save upgrades and newly added weapon forms are not universally tested.[/color][/*]
+[*][color=#EAD8B0]Fallout: New Vegas, Steam version 1.4.0.525 (with FalloutNV.esm)[/color][/*]
+[*][color=#EAD8B0]xNVSE 6.4.9 or newer (6.x)[/color][/*]
 [/list]
-[color=#EAD8B0]To uninstall, use your mod manager and preferably return to a save from before installation. For manual installs, remove only the files listed in this mod's archive and restart the game.[/color]
+[color=#EAD8B0]That's it. The Salvatore DLL is already in the zip, and you don't need any DLC, ShowOff, JIP or GECK MCP. Launch the game through xNVSE like you normally would (your 4GB setup is fine).[/color]
 
-[size=4][color=#E6B85C][b]MADE WITH SPRITE FORGE STUDIO[/b][/color][/size]
-[color=#EAD8B0]Want to put yourself or a friend into the game? I will be releasing Sprite Forge Studio on Nexus soon, letting you turn your own footage into animated sprite assets for Bethesda game mods. This Salvatore mod shows the Fallout: New Vegas workflow in action.
+[color=#EAD8B0][b]To install:[/b][/color]
+[list]
+[*][color=#EAD8B0]Close the game and back up your saves first.[/color][/*]
+[*][color=#EAD8B0]Install SalvatoreGanacci-v1.2.zip with your mod manager. Got an older Salvatore version? Replace it, don't stack them.[/color][/*]
+[*][color=#EAD8B0]Coming from v1.1? Same plugin, so your save carries on.[/color][/*]
+[*][color=#EAD8B0]Make sure SalvatoreGanacci.esp is enabled, then launch through xNVSE.[/color][/*]
+[*][color=#EAD8B0]Installing by hand? Drop the plugin plus the meshes, textures and sound folders into Fallout New Vegas/Data, keeping the folder structure.[/color][/*]
+[/list]
 
-[url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio on GitHub[/url]
-Sprite Forge Studio on Nexus: link will be added after its v1.0 publication.
-[url=https://github.com/2Shay96/salvatore-gon-getcha]Salvatore Gon’ Getcha on GitHub[/url]
-[url=https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.2]Download the GitHub v1.2 release[/url][/color]
+[color=#EAD8B0][b]Getting him to show up:[/b][/color]
+[list]
+[*][color=#EAD8B0]For the cleanest start, use a save from before you installed the mod.[/color][/*]
+[*][color=#EAD8B0]The first hit on a regular brahmin, or one of the peaceful bighorners around Goodsprings or Jacobstown, starts the countdown.[/color][/*]
+[*][color=#EAD8B0]He only shows up outdoors in the main Mojave, so if you're inside or on the Strip, head back out.[/color][/*]
+[/list]
+
+[color=#EAD8B0][b]Deploying him:[/b][/color]
+[list]
+[*][color=#EAD8B0]Left-click him in Weapons, hit OK on the popup and close the Pip-Boy.[/color][/*]
+[*][color=#EAD8B0]Activate him to put him away. He keeps the condition you repaired him to.[/color][/*]
+[*][color=#EAD8B0]If he's under 1% condition (or you somehow have two of him), he won't come out, but you won't lose him either. Repair him and try again.[/color][/*]
+[*][color=#EAD8B0]Dropping him works like dropping any other item.[/color][/*]
+[/list]
+
+[color=#EAD8B0][b]Quick heads-up:[/b] the deathclaw footage uses a separate filming add-on (invulnerability plus extra punch damage) that isn't in this download. And the green scanline cover is just promo art; the gameplay screenshots show what he actually looks like in-game.[/color]
+
+[size=4][color=#E6B85C][b]KNOWN ISSUES (v1.2)[/b][/color][/size]
+[color=#EAD8B0]Stuff I know about. Fixes will land when I get to them.[/color]
+[list]
+[*][color=#EAD8B0]In VATS you can only target his torso. Fists show 0% if you can't actually walk to him (same as any enemy). If he's been off-screen for over 2 seconds, VATS shows 0% for that go, so just back out and go in again with him in view.[/color][/*]
+[*][color=#EAD8B0]Repairing him works the normal way. Repair bags haven't been tested yet.[/color][/*]
+[*][color=#EAD8B0]His defeated-sprite loop still plays in menus. Picking him up can sometimes be silent, and he might flicker for a sec the first time he appears.[/color][/*]
+[*][color=#EAD8B0]Back up your saves before updating. Your progress and test settings carry over, but old duplicate items don't get cleaned up automatically, and I haven't tested every old save or weapon setup out there.[/color][/*]
+[/list]
+[color=#EAD8B0][b]Uninstalling:[/b] remove it with your mod manager, ideally loading a save from before you installed it. Installed by hand? Delete only the files from this mod's zip and restart the game.[/color]
+
+[size=4][color=#E6B85C][b]SPRITE FORGE STUDIO: COMING SOON[/b][/color][/size]
+[color=#EAD8B0]Want to put yourself or your mates in the game? That's exactly what Sprite Forge Studio is for. It's the tool I made Salvatore with: feed it your own videos and it turns them into animated sprite characters for Bethesda game mods. It's dropping on Nexus soon, and I'll update this page with the link when it's out. This mod is basically the demo of what it can do in New Vegas.[/color]
+[list]
+[*][color=#EAD8B0][url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio on GitHub[/url][/color][/*]
+[*][color=#EAD8B0][url=https://github.com/2Shay96/salvatore-gon-getcha]Salvatore Gon’ Getcha on GitHub[/url][/color][/*]
+[*][color=#EAD8B0][url=https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.2]Download the GitHub v1.2 release[/url][/color][/*]
+[/list]
 
 [size=4][color=#E6B85C][b]CREDITS & PERMISSIONS[/b][/color][/size]
-[color=#EAD8B0]Mod author and media preparation: 2Shay.
-Sprite creation tool: Sprite Forge Studio by 2Shay.
-Some sound effects sourced from [url=https://pixabay.com/sound-effects/]Pixabay[/url] and its sound creators.
-Salvatore Ganacci imagery and artist theme music belong to their respective rights holders. The image is not 2Shay's original artwork. The theme is used with satirical/parody intent; challenged music will be replaced with copyright-free work. No third-party imagery or audio reuse rights are granted here.
-Fallout: New Vegas: Bethesda / Obsidian. This is an unofficial fan mod, with no endorsement implied. The bundled native DLL source uses MIT terms; see its included licence. Those terms do not relicense third-party media.
-Eagle call: [url=https://soundbible.com/1845-Hawk-Screech-Valley.html]Hawk Screech Valley by Mike Koenig[/url], [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]. Converted to mono 44.1kHz PCM WAV, trimmed to 2.2 seconds and faded at the end.[/color]
+[list]
+[*][color=#EAD8B0]Made by me, 2Shay: the mod, the media, and the Sprite Forge Studio tool.[/color][/*]
+[*][color=#EAD8B0]Some sound effects come from [url=https://pixabay.com/sound-effects/]Pixabay[/url] and its sound creators.[/color][/*]
+[*][color=#EAD8B0]Eagle screech: [url=https://soundbible.com/1845-Hawk-Screech-Valley.html]"Hawk Screech Valley" by Mike Koenig[/url], [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]. I converted it to mono 44.1kHz WAV, trimmed it to 2.2 seconds and faded out the end.[/color][/*]
+[*][color=#EAD8B0]Salvatore's image and his theme music belong to their owners, not me. I didn't make the image, and the music is used as parody. If anyone objects to the music, I'll swap it for copyright-free tracks. I can't give anyone permission to reuse his image or the music.[/color][/*]
+[*][color=#EAD8B0]Fallout: New Vegas belongs to Bethesda / Obsidian. This is an unofficial fan mod, not endorsed by them.[/color][/*]
+[*][color=#EAD8B0]The bundled DLL's source code is MIT licensed (the licence is included). That covers my code only, not anyone else's images or audio.[/color][/*]
+[/list]

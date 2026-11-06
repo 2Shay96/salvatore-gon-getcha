@@ -13,3 +13,4 @@ v1.1 and v1.0 releases and tags preserved. Earlier briefing: docs/history/STATUS
 Published 6 Nov 2026 with 2Shay's authorization:
 - GitHub: tag salvatore-v1.2 (f25b429); release https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.2, marked Latest. GitHub's SHA256 for the ZIP and .sha256 assets matches the local files.
 - Nexus: https://www.nexusmods.com/newvegas/mods/99947, file "Salvatore Gon Getcha v1.2" (Main, primary, version 1.2), uploaded as the update of v1.1; v1.1 and v1.0 kept as Old files. Nexus's VirusTotal link carries the same SHA256. Page version, summary, description and changelog updated.
+- Nexus wording redone in 2Shay's voice the same evening (summary, description, file description, 1.2 changelog). docs/NEXUS-DESCRIPTION.bbcode.txt matches the live description.
