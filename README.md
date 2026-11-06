@@ -1,44 +1,43 @@
-# Salvatore Goní Getcha ó Sprite Companion
+# Salvatore Gon‚Äô Getcha ‚Äì Sprite Companion
 
 A Fallout: New Vegas mod by **2Shay**, made with [Sprite Forge Studio](https://github.com/2Shay96/sprite-forge) and GECK.
 
-Harm a peaceful animal and Salvatore comes for you in 1ñ3 game days. Defeat him, collect him, then left-click his Weapons entry to deploy a dancing sprite companion without changing your selected gun.
+Harm a peaceful animal and Salvatore comes for you in 1‚Äì3 game days. Defeat him, collect him, then left-click his Weapons entry to deploy a dancing sprite companion without changing your selected gun.
 
-## Download v1.1
+## Download v1.2
 
-Download **SalvatoreGanacci-v1.1.zip** from [Nexus Mods](https://www.nexusmods.com/newvegas/mods/99947) or [GitHub Releases](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.1). The automatic source archives are for developers.
+Download **SalvatoreGanacci-v1.2.zip** from [Nexus Mods](https://www.nexusmods.com/newvegas/mods/99947) or [GitHub Releases](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.2). The automatic source archives are for developers.
 
 Requires Steam Fallout: New Vegas 1.4.0.525 and **xNVSE 6.4.9 or newer 6.x**. The required SalvatoreGanacci DLL is bundled. No DLC, ShowOff, JIP, JohnnyGuitar or GECK MCP companion is required.
 
-Close the game, back up saves, and replace older Salvatore packages with this complete ZIP using your mod manager. Enable SalvatoreGanacci.esp and launch through xNVSE. Manual installation uses the ZIPís Data-root layout, including NVSE/Plugins. Keep untouched saves for rollback; broad v1.0 upgrade combinations are not fully tested.
+Close the game, back up saves, and replace older Salvatore packages with this complete ZIP using your mod manager. Enable SalvatoreGanacci.esp and launch through xNVSE. Manual installation uses the ZIP‚Äôs Data-root layout, including NVSE/Plugins. Keep untouched saves for rollback; broad v1.0 upgrade combinations are not fully tested.
 
-## What changed
+## What changed in v1.2
 
-- Peaceful-animal trigger, eagle warning and one 1ñ3 day countdown.
-- Shoe approach with a smooth forward/backward loop; switches to regular sprites at about 10m.
-- Stable, opaque animation selection without the observed idle/dancing disappearance.
-- Normal-click deployment preserves the exact selected gun, condition and attachments; actual repaired Salvatore condition is read from the clicked item.
-- Duplicate and broken-item deployment refusal; carried/deployed save and reload checks passed.
-- Torso is the only VATS target; robot limbs, sensors and combat inhibitor are removed.
+- **VATS works against Salvatore.** His Torso now gets a real hit chance with guns and fists, capped at 95% like any target. v1.1 always showed 0%.
+- **His theme pauses in menus.** The pause menu, the Pip-Boy, VATS targeting and the game‚Äôs other menus pause it, and it carries on from where it paused.
+- Only SalvatoreGanacci.dll and his skeleton.nif changed. SalvatoreGanacci.esp is byte-identical to v1.1, so v1.1 saves carry on unchanged.
 
-**Known issue: VATS reports 0% hit chance against Salvatore, including unarmed attacks. Fight him outside VATS. Torso-only selection does not fix accuracy.**
+Known limits: fists get 0% where there is no navmesh path to him, as for any target. If he stays off-screen in VATS for over 2 seconds, that VATS session gives 0%; re-enter VATS with him in view. His defeated-sprite loop still plays in menus.
 
-Read [full v1.1 instructions, credits and limits](docs/SalvatoreGanacci-v1.1-Readme.txt). The optional Remote is no longer automatically added to new saves. Filming and diagnostic probes are excluded. [v1.0 remains available](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0).
+v1.1 added the peaceful-animal trigger with an eagle warning and one 1‚Äì3 day countdown, the shoe approach with its 10m switch, stable animation selection, normal-click deployment that preserves your selected gun, duplicate/broken-item refusal, and Torso as the only VATS target.
+
+Read [full v1.2 instructions, credits and limits](docs/SalvatoreGanacci-v1.2-Readme.txt). The optional Remote is no longer automatically added to new saves. Filming and diagnostic probes are excluded. [v1.1](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.1) and [v1.0](https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0) remain available.
 
 ## Source and validation
 
-This is a scoped source snapshot; private workshop projects, local profiles, logs, extracted Bethesda assets and build outputs are excluded. Stable FormIDs and old script-variable positions are preserved. Native source and MIT licence are in [native-plugin](projects/salvatore/native-plugin/README.md).
+This is a scoped source snapshot; private workshop projects, local profiles, logs, extracted Bethesda assets and build outputs are excluded. Stable FormIDs and old script-variable positions are preserved. Native source and MIT licence are in [native-plugin](projects/salvatore/native-plugin/README.md). Rebuilding the native plugin from this snapshot gives the released v1.2 DLL‚Äôs exact code and data; only the linker‚Äôs build ID and timestamp differ.
 
-Python sources use Python 3.12, Pillow, PyFFI and the [GECK MCP bridge](https://github.com/2Shay96/geck-mcp-nv). Set GECK_BRIDGE_ROOT to that checkoutís bridge directory; set your own gameData path in animation-runtime.json. Script compilation requires GECK. Native builds use Zig 0.14.1. Source scripts previously generated by workshop tools are included directly in scripts/.
+Python sources use Python 3.12, Pillow, PyFFI and the [GECK MCP bridge](https://github.com/2Shay96/geck-mcp-nv). Set GECK_BRIDGE_ROOT to that checkout‚Äôs bridge directory; set your own gameData path in animation-runtime.json. Script compilation requires GECK. Native builds use Zig 0.14.1. Source scripts previously generated by workshop tools are included directly in scripts/.
 
-The animation builder and spec are supplied for development. A complete clean-checkout reproduction of the final packaged skeleton/ESP has not been verified; the distributed ZIP retains accepted runtime bytes rather than claiming a fresh build. Original game assets must be obtained from your own installation and must not be committed.
+The animation builder and spec are supplied for development. tools/prepare_salvatore_vats_proxy.py adds the v1.2 VATS shape to the v1.1 skeleton; its ESP output is not shipped, because v1.2 keeps the v1.1 plugin. A complete clean-checkout reproduction of the final packaged skeleton/ESP has not been verified; the distributed ZIP retains accepted runtime bytes rather than claiming a fresh build. Original game assets must be obtained from your own installation and must not be committed.
 
-Owner acceptance covers deploy/store, repair, save/reload, launcher/fists, duplicate gun instances, a suppressed sniper, a retextured .357, duplicate/broken refusal, stable visuals and the shoe loop/10m switch. Not every mod-added weapon or competing inventory hook is tested. See release-manifest.json for all 64 ZIP entries and hashes.
+Owner acceptance covers deploy/store, repair, save/reload, launcher/fists, duplicate gun instances, a suppressed sniper, a retextured .357, duplicate/broken refusal, stable visuals and the shoe loop/10m switch. v1.2 adds VATS with guns and fists, VATS target switching, ordinary NPC VATS, and the theme pausing and carrying on after the pause menu, the Pip-Boy and VATS. Not every mod-added weapon or competing inventory hook is tested. See release-manifest.json for all 64 ZIP entries and hashes.
 
 ## Credits and permissions
 
 Author/media preparation: 2Shay. [Showcase](https://youtu.be/BFRHDjeNHd4); the filming-only combat boost is excluded. Native code is MIT; this does not license third-party media.
 
-ìHawk Screech Valleyî by Mike Koenig, [SoundBible](https://soundbible.com/1845-Hawk-Screech-Valley.html), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/): converted to mono 44.1kHz 16-bit PCM WAV, trimmed to 2.2s, final 0.05s fade. Other sound effects include Pixabay sources; see the retained v1.0 credits.
+‚ÄúHawk Screech Valley‚Äù by Mike Koenig, [SoundBible](https://soundbible.com/1845-Hawk-Screech-Valley.html), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/): converted to mono 44.1kHz 16-bit PCM WAV, trimmed to 2.2s, final 0.05s fade. Other sound effects include Pixabay sources; see the retained v1.0 credits.
 
 Salvatore Ganacci imagery and theme belong to their rights holders; satirical/parody intent grants no third-party reuse rights. Fallout: New Vegas is Bethesda/Obsidian material. Unofficial fan mod; no endorsement implied. See the full readme for credits and permissions.

@@ -8,8 +8,9 @@ This sprite mod was made with [url=https://github.com/2Shay96/sprite-forge]Sprit
 [size=4][color=#E6B85C][b]FROM BOSS TO POCKET COMPANION[/b][/color][/size]
 [list]
 [*][color=#EAD8B0]Harming a supported peaceful animal starts a 1-3 in-game day countdown, warning and eagle screech. He arrives outdoors in the main Mojave; repeat hits do not restart the timer.[/color][/*]
+[*][color=#EAD8B0]VATS works against him: target his Torso with guns or fists for a normal hit chance.[/color][/*]
 [*][color=#EAD8B0]Separate main, idle and attack sprites; main, idle and shoe use forward/backward loops at 24 fps. The shoe approach switches to regular sprites at about 10 metres.[/color][/*]
-[*][color=#EAD8B0]A constant spatial theme while he is active, an occasional attack quip, and two randomly selected idle clips.[/color][/*]
+[*][color=#EAD8B0]A constant spatial theme while he is active, which pauses in menus and the Pip-Boy and carries on where it left off, an occasional attack quip, and two randomly selected idle clips.[/color][/*]
 [*][color=#EAD8B0]Defeat and collect him, then left-click Salvatore in Weapons and close Pip-Boy to deploy. Your selected weapon, exact inventory copy, condition and attachments are left alone.[/color][/*]
 [*][color=#EAD8B0]He follows, fights enemies and roams nearby when you stop moving.[/color][/*]
 [*][color=#EAD8B0]Companion defeats reduce his condition to approximately 66%, 33%, then 0%. Repair him before deploying again.[/color][/*]
@@ -18,9 +19,9 @@ This sprite mod was made with [url=https://github.com/2Shay96/sprite-forge]Sprit
 
 
 [size=4][color=#E6B85C][b]INSTALLATION & REQUIREMENTS[/b][/color][/size]
-[color=#EAD8B0]v1.1 requires Fallout: New Vegas Steam 1.4.0.525, FalloutNV.esm and xNVSE 6.4.9 or newer 6.x. The required SalvatoreGanacci.dll is bundled. No DLC, ShowOff, JIP or GECK MCP is needed. Launch through your working xNVSE/4GB setup.
+[color=#EAD8B0]v1.2 requires Fallout: New Vegas Steam 1.4.0.525, FalloutNV.esm and xNVSE 6.4.9 or newer 6.x. The required SalvatoreGanacci.dll is bundled. No DLC, ShowOff, JIP or GECK MCP is needed. Launch through your working xNVSE/4GB setup.
 
-Close FNV, back up your saves, and install SalvatoreGanacci-v1.1.zip in place of older Salvatore packages. Enable SalvatoreGanacci.esp and restart through xNVSE. For manual installation, copy the plugin and meshes, textures and sound folders into Fallout New Vegas/Data, preserving their folder structure.
+Close FNV, back up your saves, and install SalvatoreGanacci-v1.2.zip in place of older Salvatore packages. Enable SalvatoreGanacci.esp and restart through xNVSE. For manual installation, copy the plugin and meshes, textures and sound folders into Fallout New Vegas/Data, preserving their folder structure.
 
 Use a save made before installing the mod for a fresh start. New saves do not receive the optional Remote; existing Remote copies remain. The first qualifying attack on a standard Brahmin or selected peaceful Goodsprings/Jacobstown Bighorner starts the encounter countdown. The natural encounter begins outdoors in the main Mojave worldspace; if you are indoors or on the Strip, head back into the Mojave.
 
@@ -28,11 +29,11 @@ After collecting Salvatore, left-click his Weapons entry, acknowledge the popup 
 
 [color=#EAD8B0]Showcase note: deathclaw footage uses an optional filming add-on with invulnerability and increased punch damage. That add-on is not included in the main download. The green scanline cover is promotional artwork; gameplay screenshots show the actual sprite appearance.[/color]
 
-[size=4][color=#E6B85C][b]KNOWN ISSUES - v1.1[/b][/color][/size]
+[size=4][color=#E6B85C][b]KNOWN ISSUES - v1.2[/b][/color][/size]
 [list]
-[*][color=#EAD8B0]VATS now offers only Torso, with inherited robot limbs/sensors/combat inhibitor removed. Known unresolved bug: VATS hit chance against Salvatore is 0% with guns and fists. Fight him outside VATS; torso selection does not mean VATS attacks work.[/color][/*]
+[*][color=#EAD8B0]VATS offers only Torso, with inherited robot limbs/sensors/combat inhibitor removed. Fists get 0% where there is no navmesh path to him, as for any target. If he stays off-screen in VATS for over 2 seconds, that VATS session gives 0%; re-enter VATS with him in view.[/color][/*]
 [*][color=#EAD8B0]Repair works through the normal item repair flow. Repair-bag compatibility has not been tested.[/color][/*]
-[*][color=#EAD8B0]Music continues in menus and the Pip-Boy. Scripted pickup can be silent, and a brief sprite flicker may occur on first appearance.[/color][/*]
+[*][color=#EAD8B0]His defeated-sprite loop still plays in menus. Scripted pickup can be silent, and a brief sprite flicker may occur on first appearance.[/color][/*]
 [*][color=#EAD8B0]Back up saves before updating. Existing progression and test-mode settings are retained; old duplicate items are not automatically deleted. Broader old-save upgrades and newly added weapon forms are not universally tested.[/color][/*]
 [/list]
 [color=#EAD8B0]To uninstall, use your mod manager and preferably return to a save from before installation. For manual installs, remove only the files listed in this mod's archive and restart the game.[/color]
@@ -43,7 +44,7 @@ After collecting Salvatore, left-click his Weapons entry, acknowledge the popup 
 [url=https://github.com/2Shay96/sprite-forge]Sprite Forge Studio on GitHub[/url]
 Sprite Forge Studio on Nexus: link will be added after its v1.0 publication.
 [url=https://github.com/2Shay96/salvatore-gon-getcha]Salvatore Gon’ Getcha on GitHub[/url]
-[url=https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.0]Download the GitHub v1.0 release[/url][/color]
+[url=https://github.com/2Shay96/salvatore-gon-getcha/releases/tag/salvatore-v1.2]Download the GitHub v1.2 release[/url][/color]
 
 [size=4][color=#E6B85C][b]CREDITS & PERMISSIONS[/b][/color][/size]
 [color=#EAD8B0]Mod author and media preparation: 2Shay.

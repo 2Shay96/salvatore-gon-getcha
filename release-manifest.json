@@ -1,17 +1,48 @@
 {
-  "archive": "SalvatoreGanacci-v1.1.zip",
-  "sha256": "35e33789e7f3f625d487a9e29674eab2b2cf31c5764cbc87aa4c5e77d6c7f5ec",
-  "bytes": 5667825,
+  "archive": "SalvatoreGanacci-v1.2.zip",
+  "sha256": "0963afc974022cad6cdaa68c4cbe45484e9d8a402b8107d9b5087439fce19e57",
+  "bytes": 5671618,
   "entries": 64,
   "runtimeFiles": 62,
   "installedRuntimeMatch": true,
-  "torsoOnly": true,
-  "vats0Percent": "known unresolved; user explicitly accepted release",
-  "failedSkinningExcluded": true,
+  "basedOn": {
+    "archive": "SalvatoreGanacci-v1.1.zip",
+    "sha256": "35e33789e7f3f625d487a9e29674eab2b2cf31c5764cbc87aa4c5e77d6c7f5ec"
+  },
+  "changedFromV11": {
+    "NVSE/Plugins/SalvatoreGanacci.dll": {
+      "v1.1": "9983fa8cf1f4dba4f65f13ced4b2fb3cb4172c342df0b6a84c72421869ffe13d",
+      "v1.2": "bfdca568bb673a60e6b20ecea12fa521e09f64791ecd8cd3de98922a2038ea2d"
+    },
+    "SalvatoreGanacci-Readme.txt": {
+      "v1.1": "95bffb021a9065eac98bdfb6e7115c1aae7af8c87ba97b4ebc4a7d4455ec3638",
+      "v1.2": "5fb8b306e10c226d5a040c88a90ba6f823eaa0320b50e71c56afc7340f058f6a"
+    },
+    "meshes/creatures/salvatoreganacci/skeleton.nif": {
+      "v1.1": "8099e95b2398c2538ecfb8c975b0b83583cc3d7f9d3c5fc306d05fde961b5e45",
+      "v1.2": "d454c33110cd5ffbe1151fff711272ab9ca60197b0c824ce4e24896dabfb49c0"
+    }
+  },
+  "unchangedFromV11": 61,
+  "espByteIdenticalToV11": true,
+  "nativeDll": {
+    "sha256": "bfdca568bb673a60e6b20ecea12fa521e09f64791ecd8cd3de98922a2038ea2d",
+    "compiler": "zig 0.14.1",
+    "sources": {
+      "SalvatoreGanacci.cpp": "6b4734e2094d4a0d657688f747f5d8379585c2cc7ff31503672d133f20d3be10",
+      "nvse_abi.h": "031caac6b39b6e853e0840dfd9d66423a14404fcfb9a921e85c8658ea71c6b3a",
+      "build.py": "9158f2a89f630d9b25e1c35a37f51262915cf90832637e4fdc034d15faa3eb08"
+    },
+    "rebuild": "same code and data from this snapshot; only linker build ID and timestamp differ"
+  },
+  "ownerTests": {
+    "vats": "3 Nov 2026: guns and fists 95%, target switch, ordinary NPCs and deployment unchanged",
+    "theme": "4 Nov 2026: 12 menus incl. 3 VATS, theme carried on every time, VATS 95%"
+  },
   "files": {
-    "NVSE/Plugins/SalvatoreGanacci.dll": "9983fa8cf1f4dba4f65f13ced4b2fb3cb4172c342df0b6a84c72421869ffe13d",
+    "NVSE/Plugins/SalvatoreGanacci.dll": "bfdca568bb673a60e6b20ecea12fa521e09f64791ecd8cd3de98922a2038ea2d",
     "SalvatoreGanacci-Native-LICENSE.txt": "46f2c5082d86363f8bd767a977565f911cb039400ad2d5a8d23e81668e435053",
-    "SalvatoreGanacci-Readme.txt": "95bffb021a9065eac98bdfb6e7115c1aae7af8c87ba97b4ebc4a7d4455ec3638",
+    "SalvatoreGanacci-Readme.txt": "5fb8b306e10c226d5a040c88a90ba6f823eaa0320b50e71c56afc7340f058f6a",
     "SalvatoreGanacci.esp": "1dee0949afa531747ea2469d570a837d9342de7b957f132dc01c6c69c7c0126e",
     "meshes/creatures/salvatoreganacci/death.kf": "edf6c91cc746c324d8d6a2618008ae767d3bfee704a05a412ad1e2570af75516",
     "meshes/creatures/salvatoreganacci/idleanims/specialidle_activate.kf": "f485e7e4c440f15874e7902a0f2bbc6b99196dbcd9bc229f4196fa928a62c83e",
@@ -33,7 +64,7 @@
     "meshes/creatures/salvatoreganacci/mtturnright.kf": "63b860a32bc24115c86b26bd33225d69c17e5df6998753ad8fb55c12de471455",
     "meshes/creatures/salvatoreganacci/recoil.kf": "f377ee7e9e5b0e19887aebc97686e1e307f15a4babe614a3063919455eb62fda",
     "meshes/creatures/salvatoreganacci/salvatorebody.nif": "fd6645162de141308f43bfe885bde7ba5a34988b1420d279a68dc89302e3191a",
-    "meshes/creatures/salvatoreganacci/skeleton.nif": "8099e95b2398c2538ecfb8c975b0b83583cc3d7f9d3c5fc306d05fde961b5e45",
+    "meshes/creatures/salvatoreganacci/skeleton.nif": "d454c33110cd5ffbe1151fff711272ab9ca60197b0c824ce4e24896dabfb49c0",
     "meshes/creatures/salvatoreganacci/specialanims/1hmaim.kf": "53a18e693bbff53a3204ae6d2e479a1b63a594746fff695aa036d73e8e4493d1",
     "meshes/creatures/salvatoreganacci/specialanims/1hmattackleft_chop.kf": "9886ac1a49a07706e6ce439afa5c3d1663f659a979836110deeb3b055d3c42e3",
     "meshes/creatures/salvatoreganacci/specialanims/1hmattackright_chop.kf": "bc53c947ecf593f8077d641d8d67217248e2dc8a25c3e624de0576606d5b5698",
@@ -73,6 +104,5 @@
     "textures/salvatoreganacci/idle.dds": "f18e483d0ca1bcfa0611bf5f31a3a6a6ef3a856c79eaf6c6b0e0b0b3ec107b36",
     "textures/salvatoreganacci/main.dds": "2a58fc20ba24d8c01b8c3a485b4ea096e5688544ae1ed7c34f06db02e93096d0",
     "textures/salvatoreganacci/shoe.dds": "e309cf7a4c7c99a7840a8490fc999789ae2d98debd1081446147833e711b05ea"
-  },
-  "published": true
+  }
 }
